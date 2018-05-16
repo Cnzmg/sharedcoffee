@@ -1,0 +1,35 @@
+.list{
+	height: 100%;
+	margin-bottom: 0;
+}
+.list li{
+	height: 100%;
+	margin:2%;
+	display: flex;
+}
+.message{
+	flex: 1; 
+	height: 100%;
+	position: relative;
+}
+.message p{
+	margin-bottom:0;
+
+}
+.wait_pay{
+	text-align: right;
+	font-size:1rem;
+	color: red;
+}
+.list_foot{
+	height: 100%; 
+	margin-bottom: 0;
+}
+.list_foot li{
+	height: 20%;
+	display: flex;
+}
+.list_foot li span{
+	flex:1;
+	display: inline-block;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>消费明细</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+  <script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid">
+	<div class="row" style="height: 10%;background:rgba(0,0,0,1);">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%; padding: 5%; font-size: 2rem; font-weight: bold;">
+			消费明细
+		</div>
+	</div>
+	<div class="row" style="height: 85%;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;">
+			<ul style="margin-bottom: 0; height: 100%;overflow-y:auto;" class="list">
+			<!-- <li style="display: flex; margin:1% 2%;background:rgba(0,0,0,0.5);">
+                    <div style="flex: 1; padding:2%;">
+                       <img src="../image/3.jpg" alt="" style="height: 80%; width: 100%;">
+                    </div>
+                    <div style="flex: 4; padding:2%; font-size: 1.5rem;">
+                        <p>拿铁</p>
+                        <p>2017年12月26日 01:27:15</p>
+                    </div>
+                    <div style="flex: 2; padding:2%; text-align: right;">
+                        <p>-13.00</p>
+                        <p>钱包支付</p>
+                    </div>
+                </li> -->
+
+			</ul>
+		</div>
+	</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/base.js"></script>
+<script>
+	jQuery(function($){
+		find_consumption_info();
+    $("#foot_third").css({
+        color:"#fff100"
+    }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+	})
+</script>
+</html>

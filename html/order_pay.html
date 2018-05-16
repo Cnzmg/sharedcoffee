@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>订单支付</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<link rel="stylesheet" type="text/css" href="../css/order_pay.css" />
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body  style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid">
+		<div class="row" style="height: 10%;background:#000;color:#fff; ">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%; font-size: 2rem;background:rgba(0,0,0,1);font-weight: bold; padding:5%;">
+				我的订单
+			</div>
+		</div>
+		<div class="row" style="height: auto;overflow:hidden;background:rgba(0,0,0,0.5);border-bottom: 1px solid #828282;">
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="height: 100%; padding:2%;">
+				<img id="payBackgroung" src="../image/lb/pay/bg.jpg" alt="" style="width: 100%;">
+			</div>
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="height: 100%; padding:1% 5%;" id="product">
+			</div>
+		</div>
+		<div class="row" style="height: auto;overflow:hidden;margin-bottom:18%;">
+			<ul class="pay" style="padding:0;">
+				<li id="volume" style="position: relative;background:rgba(0,0,0,0.5);padding:4.1%;margin-bottom:2%;"><span>使用消费劵</span><span style="position: absolute; right: 4.1%; color: #828282;" id="consum">当前暂无可用优惠卷<img style="width:20%;margin-left:10.1%;" src="../image/lb/pay/right.png" alt="" /></span></li>
+				<li style="padding-left:4.1%;color:#8c8c8c;height:9.7%;margin-bottom:2%;">钱包支付</li>
+				<li id="wallet" style="display: flex; position: relative;padding:2.5% 4.1%;height:12.7%;background:rgba(0,0,0,0.5);"><span><img style="width:50%;" src="../image/lb/pay/yue.png" alt="" /></span><span style="margin-right: 25%;">余额</span><span id="balance">￥1200</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%;"  id="wallet_img" src="../image/lb/pay/action.png" alt="" /></span></li>
+				<li style="padding-left:4.1%;color:#8c8c8c;height:9.7%;margin-bottom:2%;">其他支付方式</li>
+
+				<li id="wxpay" style="position: relative;padding:2.5% 4.1%;height:12.7%;background:rgba(0,0,0,0.5);margin-bottom:0;box-shadow: 1px 1px 3px #000;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/wx.png" alt="" /></span><span>微信支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" id="wxpay_img" alt="" /></span></li>
+
+				<!-- <li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/ali.png" alt="" /></span><span>支付宝支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li>
+
+				<li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/ypay.png" alt="" /></span><span>电信翼支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li>
+
+				<li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/paypai.png" alt="" /></span><span>palpay支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li> -->
+			</ul>
+		</div>
+		<input type="hidden" id="paymethod" value="0" />
+
+		<input type="hidden" id="consumMoney" value="0" />
+
+		<input type="hidden" id="rCouponId" value="" />
+		<input type="hidden" id="couponId" value="" />
+		<input type="hidden" id="couponMoney" value="0" />
+
+		<div class="row" style="height: 7.3%;width:100%; background:rgba(0,0,0,1);line-height:50px; border:1px solid black; position:fixed;bottom:0;left:0;">
+
+			<div class="col-sm-6 col-xs-6 col-md-3 col-lg-6" style="height: 100%;font-size:1.6rem;padding-left:4.1%;">
+				<span style="font-size: 2rem;font-weight: bold;">合计</span><span style="color: #9f0802;font-size: 2rem;color:#9f0802;font-weight: bold;">￥</span><span style="color: #9f0802;font-size: 2rem;color:#9f0802;font-weight: bold;" id="totalMoney">0.00</span>
+			</div>
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="height: 100%;padding-right: 2.5%;text-align:right;">
+				<a href="#" style="color:white;" onclick='PayMoney()'><img style="width:60%;" src="../image/lb/pay/_0000_OK.png" alt="" /></a>
+			</div>
+		</div>
+	</div>
+	<!-- order_show_hide -->
+	<div class="conmoney" style="display:none;">
+		<ul style="margin-bottom:0;">
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="../js/base.js"></script>
+	<script type="text/javascript" src="../js/ui.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){$("#menu").hide();});
+	</script>
+</body>
+</html>

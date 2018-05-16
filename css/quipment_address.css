@@ -1,0 +1,18 @@
+.coffee{
+	padding:10px;
+}
+.coffee li{
+	display: flex;
+}
+.coffee li a{
+	flex:1;
+	text-align: center;
+	padding:5%;
+	text-align: center;
+	display: inline-block;
+	border:1px solid black;
+	margin:2%;
+	font-size: 1.1rem;
+	border-radius: 50%;
+	color:black;
+}

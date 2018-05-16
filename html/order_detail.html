@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>订单详情</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<link rel="stylesheet" href="../css/order_detail.css">
+	<script src="../asset/../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+  <script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body  style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid" style="height: 100%;">
+		<div class="row" style="height: 10%;background:rgba(0,0,0,1); font-size: 2rem; font-weight: bold;padding:5%;">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%;">
+				订单详情
+			</div>
+		</div>
+		<div class="row" style="padding-bottom: 2%;">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%;">
+				<ul class="list">
+					<li class="num_first" style="background:rgba(0,0,0,0.5);margin:0;">
+							<!-- <div style="flex: 1; height: 100%;"><img src="../image/3.jpg" alt="" style="height: 80%; width: 80%; margin:10% 0;"></div>
+							<div  class="message">
+								<p class="wait_pay">待付款</p>
+								<p style="font-size:2rem;font-weight: bold;">拿铁</p>
+								<p style="display: flex; font-size:1rem; "><span style="flex: 1; text-align: right; margin-right:2%;">兑换时间</span><span style="flex: 2;">2017-08-27 13:15:02</span></p>
+								<p style="display: flex; font-size:1rem;"><span style="flex: 1; text-align: right; margin-right:2%;">冷热</span><span style="flex: 2;">热饮</span></p>
+								<p style="display: flex; font-size:1rem;"><span style="flex: 1; text-align: right; margin-right:2%;">糖浓度</span><span style="flex: 2;">半糖</span></p>
+								<p style="display: flex; font-size:1rem;"><span style="flex: 1; text-align: right; margin-right:2%;">咖啡浓度</span><span style="flex: 2;">较多</span></p>
+							</div> -->
+						</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" style="height: 20%;" id="addhide">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%;">
+				<p style="margin-bottom: 0; padding:3.7%; font-weight: bold;margin-top:1.5%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;">最近设备地点</p>
+				<a href="./quipment_address.html" onclick="getAddress();" style="display: block; padding:3.7%; color:#fff;background:rgba(0,0,0,0.5);"><span style="margin-right:5%"><img src="../image/lb/detail/_0005_51c214f488eaa34e45b1f597192dacf3.png" style="width:5%;" alt="" /></span><span style="font-size: 1.4rem;" class="address"></span><span style="float:right;text-align:center;"><img src="../image/lb/detail/right.png" style="width:50%;" alt="" /></span></a>
+			</div>
+		</div>
+		<div class="row" style="height: auto;overflow:hidden;margin-bottom:18%;">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%;">
+				<ul class="list_foot">
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/base.js"></script>
+	<script type="text/javascript">
+        var lang = [];
+        var ling = [];
+
+		jQuery(function(){
+			find_order_detail();
+            $("#foot_third").css({
+                color:"#fff100"
+            }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+			adds=JSON.parse(localStorage.getItem("my_weizhi"));
+            var my_lng = adds.my_lng;
+            var my_lat = adds.my_lat;
+            var radius = 2000000000000000;
+			$.ajax({
+              type:"GET",
+              url:"http://api.map.baidu.com/geosearch/v3/nearby?ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy&geotable_id=182569&location="+my_lng+","+my_lat+"&radius="+radius+"&tags=coffee&sortby=distance:1",
+              dataType:"jsonp",
+              success:function(res){
+                  lang = res.contents[0].location[0];
+                  ling = res.contents[0].location[1];
+                  console.log(lang);
+                  console.log(ling);
+                  console.log(res);
+                  $(".tip").css({
+                      zIndex: 1,
+                      fontFamily:"kaiti",
+                      fontWeight:"bold",
+                      fontSize:"1.2rem"
+                  });
+                  $(".title").append(res.contents[0].title);
+                  $(".address").append(res.contents[0].address);
+
+                  if(res.status != 0)
+                      {
+                          $(".address").append("附近没有咖啡机~~");
+                      };
+              }
+          })
+				});
+        function getAddress()
+        {
+            var Jsonobj = JSON.stringify({lng1:lang,lat1:ling});
+            localStorage.setItem("weizhi",Jsonobj);
+        };
+	</script>
+</body>
+</html>
+<!-- 486.4
+815.89
+125.20 -->

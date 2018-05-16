@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+
+  <meta http-equiv="Pragma" content="no-cache" />
+
+  <meta http-equiv="Expires" content="0" />
+
+	<link rel="stylesheet" href="asset/css/reset.css">
+	<link rel="stylesheet" href="asset/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="asset/css/commom.css">
+  <link rel="icon" href="bitbug_favicon.ico" type="image/x-icon" />
+  <script src="asset/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="asset/js/TouchSlide.1.1.js"></script>
+  <!-- 百度地图jsapi -->
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+  <!-- 百度地图jsapi -->
+
+  <script type="text/javascript" src="asset/js/config.js"></script>
+  <script language="javascript" type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+
+  <title>首页</title>
+</head>
+<body style="background:url(image/lb/background.jpg) repeat;background-size: 100%;height: auto;">
+<style type="text/css">
+      .focus{ width:100%; height:auto;  margin:0 auto; position:relative; overflow:hidden;   }
+      .focus .hd{ width:100%; height:5px;  position:absolute; z-index:1; bottom:0; text-align:center;  }
+      .focus .hd ul{ overflow:hidden; display:-moz-box; display:-webkit-box; display:box; height:5px; background-color:rgba(51,51,51,0.5);   }
+      .focus .hd ul li{ -moz-box-flex:1; -webkit-box-flex:1; box-flex:1;width:100%;}
+      .focus .hd ul .on{ background:#FF4000;  }
+      .focus .bd{ position:relative; z-index:0; width:100%; }
+      .focus .bd li{ width:100%;position:relative;}
+      .focus .bd li img{ width:100%;  height:150px; }
+      .focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */ }
+    </style>
+<script type="text/javascript">
+  $("body").append('<div class="mask_layer"></div>');
+</script>
+<a href="#" class="arr"></a>
+<div class="container-fluid">
+			<div class="row" style="height: auto;overflow:hidden;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:auto;">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: auto;">
+            <div class="carousel-inner" role="listbox" style="height: auto;">
+                <div id="focus" class="focus">
+                  <div class="bd">
+                    <ul id="banner">
+                    </ul>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+			</div>
+
+			<div class="row" style="height: auto;overflow:hidden;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;margin-bottom:20%;">
+          <ul style="height:100%;overflow:hidden;" class="coffee">
+
+          </ul>
+        </div>
+			</div>
+      </div>
+
+<div style="z-index:999;width:100%;text-align:center;font-size:1rem;color:#fff;position:fixed;top:0;left:0;padding:6px 0;box-sizing:border-box;background:rgba(0,0,0,0.5);display:none;" id="tipie"></div>
+</body>
+<script src="js/index.js?v=20180425"></script>
+<script>
+    jQuery(function($){
+      $("#foot_first").css({
+        color:'#fff100'
+      }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/coffee_action.png");
+      //loaclStorage存储咖啡名称和咖啡价格
+      $("body li").bind("click",function(){
+          var tit = $(this).children('div').children('div');
+          var data = localStorage.setItem("liItem", JSON.stringify({img:$(this).children('div').children('img').attr("src"),title:tit.children('span').eq(0).html()})); //点击的产品与id
+					__load.location = "html/delicious.html?productId=" + this.getAttribute("data-productId");
+      });
+      setTimeout(function(){$("#tipie").fadeOut(100);}, 10000);
+      //清除
+      $(".mask_layer").remove();
+});
+</script>
+</html>

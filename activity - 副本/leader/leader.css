@@ -1,0 +1,128 @@
+body{
+  background: url("../../image/activity_bg.png") no-repeat;
+  background-size: 100%;
+}
+.wrapper {
+  width: 100%;
+  padding: 0 20%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.row{
+  width: 100%;
+}
+.tip{
+  color: #000;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  text-align: left;
+  font-weight: bold;
+}
+.tip span {
+  color: #ff3000;
+}
+input {
+  display: inline-block;
+  width: 100%;
+  height:42px;
+  line-height: 42px;
+  border:none;
+  padding-left:10%;
+  /*text-align: center;*/
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  overflow:hidden;
+  border-radius: 4px;
+  color:#333 !important;
+}
+.verify {
+  position:relative;
+  width: 100%;
+  height: 42px;
+  margin-bottom:18px;
+  overflow:hidden;
+}
+.send-btn {
+  position:absolute;
+  right: 3%;
+  top: 50%;
+  width: 27%;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  background:#fffe04 ;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2rem;
+  color:#333333;
+  /*box-shadow: 1px 1px 2px #3b3537;*/
+  transform:translateY(-50%);
+  overflow:hidden;
+  cursor:pointer;
+}
+.submit {
+  font-size: 1.6rem;
+  color:#333333;
+  background: #fff;
+  cursor:pointer;
+}
+.acti-tit {
+  position: relative;
+  width: 55%;
+  height: 2.4rem;
+  line-height: 2.2rem;
+  font-size:1.4rem;
+  font-weight:bold;
+  text-align: center;
+  border: 2px solid #3b3537;
+  border-radius: 18px;
+  background: rgba(0,0,0,0);
+  margin: 0 auto;
+  margin-bottom: 12%;
+}
+.acti-tit:before{
+  position:absolute;
+  content:'';
+  bottom: -8px;
+  left: 50%;
+  margin-left: -4px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid #251a15;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+.acti-desc{
+  width: 100%;
+  font-size: 1.4rem;
+  text-align:left;
+  color:#000;
+  font-weight:bold;
+}
+.acti-desc p{
+  line-height: 1.6rem;
+  font-weight:bold;
+  white-space: nowrap;
+  margin:0;
+}
+.skip{
+  width: 33%;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  color: #ff4401;
+  border: 1px dotted #000;
+  margin: 0 auto;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.submit {
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+    border-radius: 5px;
+    color: #333333;
+    background: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+}

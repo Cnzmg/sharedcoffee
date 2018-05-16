@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>我的信息</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/my.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<script type="text/javascript" src="../js/base.js"></script>
+	<style type="text/css">
+	.phmessage{
+		animation:myfirst 5s infinite;
+		-webkit-animation:myfirst 5s infinite;
+	}
+		@keyframes myfirst{
+		0% {
+		transform:scale(1);
+		}
+		50% {
+		transform:scale(1.1);
+		}
+		55%{
+		  transform:rotate(5deg);
+		}
+
+		60%{
+		transform:rotate(-5deg);
+		}
+		65%{
+		  transform:rotate(5deg);
+		}
+
+		70%{
+		transform:rotate(-5deg);
+		}
+		75% {
+		transform:scale(1.1);
+		}
+		100% {
+		transform:scale(1);
+		}
+
+		}
+		@-webkit-keyframes myfirst{
+			0% {
+			transform:scale(1);
+			}
+			50% {
+			transform:scale(1.1);
+			}
+			55%{
+				transform:rotate(5deg);
+			}
+
+			60%{
+			transform:rotate(-5deg);
+			}
+			65%{
+				transform:rotate(5deg);
+			}
+
+			70%{
+			transform:rotate(-5deg);
+			}
+			75% {
+			transform:scale(1.1);
+			}
+			100% {
+			transform:scale(1);
+			}
+		}
+	</style>
+</head>
+<body  style="background:url(../image/lb/background.jpg) repeat; background-size: 100%;">
+	<div class="container-fluid">
+		<div class="row my_bg">
+			<i class="phmessage" onclick='window.location.href="../activity/myactivity4-5.html"' style="display: none;font-size:10px;position:absolute;top:100%;left:80%;margin-top:-28%;margin-left:-25%;text-align:center;color:#fff;background:url(../image/free-logo.png);width:100px;height:65px;background-size: 100% 100%;padding:7px;box-sizing:border-box;border-radius: 10px;z-index:1;"><!-- 免<br />费<br />喝 --></i>
+
+			<div style="width:22.1%;margin:0 auto;position:absolute;top:50%;left:50%;margin-top:-15%;margin-left:-11%;text-align:center;color:#fff;overflow:hidden;">
+				<img id="userImg" src="../image/lb/my/_0007_Shape-151.png" width="100%" class="img-circle" alt="" />
+				<p style="margin:5.7% 0;font-size:1.2rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;text-align:center;" id="userName">
+					昵称昵称
+				</p>
+				<p style="background:#fff100;color:#000;font-size:1rem;border-radius:8px;margin:0 6px;padding:2px 3px;" id="userLv">
+					普通会员
+				</p>
+			</div>
+		</div>
+		<div class="row" style="border-top:1px solid #828282; padding:0 4.1%; height: 11%; background:rgba(0,0,0,0.5);" id="integral">
+
+		</div>
+		<div class="row" style="margin-bottom:16%;margin-top:1.5%;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;">
+				<ul class="form" style="height: 100%; margin-bottom: 0;">
+					<a href="my_order.html" style="background:rgba(0,0,0,0.5);color:#fff;">
+						<li style="position: relative">
+							<span class="form_first">订单</span>
+							<span class="form_second"><i class="order_msg"></i><img src="../image/lb/my/oder.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+					<a href="my_wallet.html" style="background:rgba(0,0,0,0.5);color:#fff;">
+						<li>
+							<span class="form_first">钱包</span>
+							<span class="form_second"><img src="../image/lb/my/oder3.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+					<a href="my_point.html" style="background:rgba(0,0,0,0.5);color:#fff;">
+						<li>
+							<span class="form_first">积分</span>
+							<span class="form_second"><img src="../image/lb/my/oder2.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+					<a href="my_coupon.html" style="background:rgba(0,0,0,0.5);color:#fff;">
+						<li style="position: relative">
+							<span class="form_first">优惠券</span>
+							<span class="form_second"><i class="coupon_msg"></i><img src="../image/lb/my/oder4.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+					<a href="../html/my_redeemCode.html" style="background:rgba(0,0,0,0.5);color:#fff;border:0;">
+						<li style="position: relative">
+							<span class="form_first">兑换码</span>
+							<span class="form_second"><i class="redeem_msg"></i><img src="../image/lb/my/oder1.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+					<a href="../html/my_faultfeedback.html" style="background:rgba(0,0,0,0.5);color:#fff;border:0;">
+						<li>
+							<span class="form_first">故障反馈</span>
+							<span class="form_second"><img src="../image/lb/my/oder5.png" style="width:30%;" alt="" /></span>
+						</li>
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+	<script>
+		jQuery(function($){
+			JSON.parse(localStorage.getItem("token")).userStatus == 0 ? $(".my_bg").append('<div style="color:#fff;width:100%;height:100%;background:#ccc;z-index:999;position:absolute;background: rgba(0,0,0,0.7);text-align:center; line-height:100px;">当前账户已经被冻结！如有疑问？<a href="javascript:void(0);">联系客服</a></div>') : null;
+			user_info();
+			$("#foot_third").css({
+				color:"#fff100"
+			}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+		})
+	</script>
+
+</html>

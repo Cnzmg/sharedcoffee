@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>充值</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid">
+		<div class="row" style="height: 10%;background:rgba(0,0,0,1);">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%; font-size: 2rem;  padding:5%;">
+				充值
+			</div>
+		</div>
+		<div class="row" style="height: 20%;background:rgba(0,0,0,0.5);">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="height: 100%; padding:5%;">
+				<div class="input-group" style="width: 100%; margin-bottom: 2%;">
+					<span style="font-size:4rem;position:absolute;top:0;left:3px;color:#000;z-index:9;">￥</span>
+			      <input type="tel" class="form-control" id="paymentMoney" placeholder="充值金额" maxlength="6" value="" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" style="height:60px;font-size:2.5rem;color:#000;padding-left:40px;">
+				</div>
+				<p style="font-size: 1rem; color:#828282;">请填写整数最少充值100,单次满100送50</p>
+			</div>
+		</div>
+		<div class="row" style="height: auto;overflow:hidden;margin-top:3%;">
+			<ul class="pay" style="padding:0;">
+
+				<li id="wxpay" style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/wx.png" alt="" /></span><span>微信支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/action.png" id="wxpay_img" alt="" /></span></li>
+
+				<!-- <li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/ali.png" alt="" /></span><span>支付宝支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li>
+
+				<li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/ypay.png" alt="" /></span><span>电信翼支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li>
+
+				<li style="position: relative;padding:4.1%;height:12.7%;background:rgba(0,0,0,0.5);border-bottom:1px solid #828282;margin-bottom:0;"><span><img style="width:8%;margin-right: 8%;" src="../image/lb/pay/paypai.png" alt="" /></span><span>palpay支付</span><span style="position: absolute; right: 4.1%;"><img  style="width:60%; " src="../image/lb/pay/no_action.png" alt="" /></span></li> -->
+			</ul>
+		</div>
+
+		<div class="row" style="height: 7%;width:100%; background:rgba(0,0,0,1); border:1px solid black; position:fixed;bottom:0;left:0;padding:2% 3%;">
+			<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8" style="height: 100%;font-size:1.6rem;line-height:3rem;">
+				<span>合计：</span><span style="color: #9f0802;" id="showMoney">￥0.00</span>
+			</div>
+
+			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4" style="height: 100%;">
+				<a href="#" style="color:white;" onclick='WeChat_recharge()'><img style="width:100%;" src="../image/lb/pay/_0000_OK.png" alt="" /></a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var inMoney = document.getElementById("paymentMoney");
+		inMoney.onblur = function(e)
+		{
+			if(inMoney.value)
+				{
+					var showMoney = document.getElementById("showMoney");
+					showMoney.innerHTML = "￥" + parseInt(inMoney.value) +".00";
+					// inMoney.value = parseInt(inMoney.value + ".00")
+				}
+			else
+				{
+					var showMoney = document.getElementById("showMoney");
+					showMoney.innerHTML = "￥" + 0 +".00";
+				};
+			console.log(e.timeStamp);
+		};
+		window.onload = function(){
+			$("#menu").hide();
+		};
+	</script>
+	<script type="text/javascript" src="../js/base.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Conversion station loading~~~</title>
+</head>
+<body>
+  <script type="text/javascript">
+      function getQueryString(n){
+          var reg = new RegExp("(^|&)" + n + "=([^&]*)(&|$)", "i");
+          var e = window.location.search.substr(1).match(reg);
+          if(e) return unescape(e[2]);
+          return null;
+      };
+      var dp = getQueryString("code");
+      var state = getQueryString("state");
+      dp ? (window.location.href = state + (state.indexOf('?') != -1 ? '&' : '?') + 'code=' + dp) : null;
+  </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+.coffee_name{
+	font-size:3rem;
+	font-weight: bold;
+	padding:10px;
+}
+.coffee_left{
+	font-size: 25px;
+	font-weight: bold;
+	font-family: "kaiti";
+}
+.sugar{
+	/*display: flex;*/
+	height: 13.72%;
+    margin: 0 0 5.88% 0;
+}
+.sugar_point{
+	background:url(../image/log-icon.png) no-repeat;
+	background-size: 100%;
+	color: #fff100;
+	flex:1; 
+	font-size: 1.4rem;
+	text-align: center;
+	margin: 3% 20%;
+/*	background-clip: content-box;
+	background-position: center;
+	padding-top: 3px;*/
+	position:relative;
+	height:45px;
+	line-height: 190%;
+}
+/*.sugar_point img
+{
+	width:100%;
+}*/
+.sugar_point span
+{
+	display:inline-block;
+	position:relative;
+	text-align: center;
+	font-size: 1.2rem;
+	/*font-weight: bold;*/
+	/*margin-right: 6px;*/
+}
+.sugar_point span:nth-of-type(1)
+{
+	display:inline-block;
+	position:relative;
+	text-align: center;
+	/*font-weight: bold;*/
+	margin-right: 16px;
+}
+/*.sugar_point span:nth-of-type(1)
+{
+	margin-top: 3px;
+}
+.sugar_point span:nth-of-type(2)
+{
+	overflow: hidden;  
+    text-overflow: ellipsis;  
+    white-space: nowrap;
+    font-size: 1rem;
+}*/
+.sugar_num{
+	color:#fff100;
+	flex:2;
+	width:85%;
+	margin:15px auto;
+}
+.sugar_num p{
+	display: flex;
+}
+.sugar_num p span{
+	flex:1;
+}
+.sugar_num p span img
+{
+	width:50%;
+}
+.environment{
+	display: flex;
+	background:url(../image/lb/taste/hot&lced.png) no-repeat;
+	background-size: 30%;
+}
+
+.environment .hot,.environment .cold
+{
+	float: left;
+	width:30%;
+}
+.environment .cold
+{
+	margin-left: 7.8%;
+}
+
+
+.environment .environment_text{
+	font-size: 2rem;
+	flex:1;
+	margin-right: 10px;
+}
+.environment .environment_select{
+	flex:2;
+}
+.environment .environment_select input[type="radio"]{
+	height: 40px;
+	vertical-align: middle;
+	margin-right: 20%;
+}
+.coffee_point{
+	background:url(../image/lb/taste/coffee.png) no-repeat;
+	background-size: 98%;
+	color: #fff;
+	flex:1; 
+	font-size: 2rem;
+	text-align: left;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+.progr0
+{
+	width:100%;
+	/*height: 7px;*/
+	/*background:url(../image/lb/taste/_0018_xu.png) no-repeat;*/
+	/*margin-bottom: 8px;*/
+	/*background-size: 100%;*/
+	/*background:gold;*/
+	border:1px solid gold;
+	height:16px;
+}
+.progr0 div
+{
+	position:absolute;
+	top: 0;
+	left:0;
+	width:50%;
+	height:16px;
+	background:gold;
+}
+.progr1
+{
+	width:100%;
+	border:1px solid gold;
+	height:16px;
+}
+.progr1 div
+{
+	position:absolute;
+	top: 0;
+	left:0;
+	width:50%;
+	height:16px;
+	background:gold;
+}
+.progr2
+{
+	width:100%;
+	border:1px solid gold;
+	height:16px;
+}
+.progr2 div
+{
+	position:absolute;
+	top: 0;
+	left:0;
+	width:50%;
+	height:16px;
+	background:gold;
+}
+.progr3
+{
+	width:100%;
+	border:1px solid gold;
+	height:16px;
+}
+.progr3 div
+{
+	position:absolute;
+	top: 0;
+	left:0;
+	width:50%;
+	height:16px;
+	background:gold;
+}
+.progr4
+{
+	width:100%;
+	border:1px solid gold;
+	height:16px;
+}
+.progr4 div
+{
+	position:absolute;
+	top: 0;
+	left:0;
+	width:50%;
+	height:16px;
+	background:gold;
+}
+
+.coffee_num{
+	flex:2;
+	margin-top: 20px;
+	width: 100%;
+    overflow: hidden;
+    margin-top: 25px;
+}
+.coffee_num p{
+	display: flex;
+}
+.coffee_num p span{
+	flex:1;
+}
+.coffee_num p span img
+{
+	width:40%;
+}
+
+.coffee{
+	color:#fff100;
+	display: flex;
+}
+.price{
+	font-size: 2rem;
+	color:#9f0802;
+	font-weight: bold;
+}
+
+
+/*版本*/
+.ider_box
+{
+	width:78%;
+	margin:0 auto;
+	background:rgba(0, 0, 0, 0.7);
+	color:#fff;
+	font-size: 1.4rem;
+	padding:2%;
+	text-align: center;
+	border-radius:0 0 16px 16px;"
+}
+.ider_box p
+{
+	margin-bottom: 0;
+	font-size: 1.6rem;
+}
+.ider_box p:nth-of-type(2),.ider_box p:nth-of-type(4)
+{
+	font-size: 1rem;
+	color:#828282;
+}
+.place
+{
+	margin-top: 5.5%;
+	text-indent: 1em;
+	font-weight: bold;
+	width: 100%;
+	overflow:hidden;
+	white-space: nowrap;     
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis; 
+	font-size: 1rem;
+}
+.place span
+{
+	font-size: 1.5rem;
+}
+
+.sugar_point .hot
+{
+	position: absolute;
+	bottom: -90%;
+	left: -10%;
+}
+.sugar_point .cold
+{
+	position: absolute;
+	bottom: -90%;
+	right: -10%;
+}

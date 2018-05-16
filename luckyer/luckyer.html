@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>每日抽奖活动</title>
+<link rel="stylesheet" href="css/demo.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
+<link rel="stylesheet" type="text/css" href="css/ui.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="../asset/js/config.js"></script>
+<script language="javascript" type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<style type="text/css">
+html,body { margin: 0; padding: 0; position: relative; width: 100%; height: 100%; background: #fff100;}
+.canvas{
+	padding: 14%;
+	box-sizing: border-box;
+	position: absolute;
+	top: 42%;
+	left: 0;
+}
+img{ pointer-events: none; }
+.posiretive{
+	position: relative;
+}
+</style>
+</head>
+<body id="body">
+<div>
+	<img src="img/luckyer.png" style="width:100%;" />
+</div>
+<div style="background:rgba(0,0,0,0);width:100%;height:100%;z-index:6666666;position:absolute;top:0;left:0;display:none;" class="hidebg"></div>
+<div class="canvas">
+	<div id="canvas" class="posiretive">
+		<div style="position:absolute;top:0;">
+			<img src="img/bd.png" alt="turntable" style="z-index: 9;"/>
+		</div>
+		<div  class="posiretive" style="z-index: 6;padding:3%;box-sizing:border-box;">
+			<div class="pointer" id="pointer" style="position: absolute;top: 50%;left: 50%;margin-left: -12%;margin-top: -12%;z-index: 99999;">
+				<img src="img/btn-loaw.png" alt="pointer" style="width:40%;"/>
+			</div>
+			<div class="rotate">
+				<img id="rotate" src="img/raload.png" alt="turntable" style="z-index: 3;"/>
+			</div>
+			<div style="position:absolute;top:-14px;left:50%;margin-left:-9px;">
+				<img src="img/d.png" alt="" style="width:35%;" />
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<script src="js/sweet-alert.min.js"></script>
+<script type="text/javascript" src="./js/luck.js"></script>
+</body>
+</html>

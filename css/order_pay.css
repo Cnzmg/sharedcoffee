@@ -1,0 +1,26 @@
+.pay {
+	padding:5%;
+}
+.pay li{
+	margin-bottom: 4%;
+}
+.conmoney
+{
+    width:70%;
+    background:#fff;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    position:fixed;
+    top:47%;
+    left:50%;
+    margin-left:-35%;
+    z-index:9999999;
+    color:#000;
+}
+.conmoney ul li
+{
+    line-height:40px;
+    padding:0 6px;
+    border-bottom: 1px solid #828282;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>故障反馈</title>
+    <link rel="stylesheet" href="../asset/css/reset.css">
+    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../asset/css/commom.css">
+    <script src="../asset/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../asset/js/config.js"></script>
+    <script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+    <div class="container-fluid">
+        <div class="row" style="height: auto;overflow:hidden;background:rgba(0,0,0,1);">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%; font-size: 2rem; font-weight: bold; padding:5%;">
+                故障反馈
+            </div>
+        </div>
+        <div class="row" style="height: auto;overflow:hidden;background:rgba(0,0,0,0.5);">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;padding:5%; ">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn" type="button" style="border:0;color:#fff;background:none;">请输入机器编号</button>
+                  </span>
+                  <input style="border:0;color:#000;height:20px;margin-top:8px;" type="text" class="form-control" placeholder="" id="machineNumber">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height: 50%;background:rgba(0,0,0,0.5);">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 80%; padding:0 5%;overflow:hidden;">
+                <textarea name="faultContent" id="faultContent" style="width:100%;height:100%;resize:none;color:#000;" placeholder="故障反馈"></textarea>
+                <div  style="position:absolute;bottom:0;left:0;width:90%; margin-left:5%;margin-right:5%;" ><input type="text" style="width:100%;" class="form-control" placeholder="请输您的联系方式" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" id="faultPhone" /> </div>
+            </div>
+        </div>
+
+        <div class="btn btn-default" style="margin-left:60%;background:#fff100;padding:2% 10%;border-radius:20px;color:#000;margin-top:3%;" onclick="add_fault_feedback()">提交</div>
+    </div>
+    <script type="text/javascript" src="../js/base.js"></script>
+
+</body>
+</html>

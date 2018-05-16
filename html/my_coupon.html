@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>我的优惠券</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<link rel="stylesheet" type="text/css" href="../dist/dropload.css" />
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<script type="text/javascript" src="../dist/dropload.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<style type="text/css">
+		.icon-search
+		{
+			border:1px solid #fff;
+			height:40px;
+			border-radius: 60px;
+		}
+		.form-control:focus
+		{
+			box-shadow:none;
+		}
+	</style>
+</head>
+<body style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid">
+		<div class="row" style="height: 8%;background:rgba(0,0,0,1);color:#fff; ">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center; height: 100%; color:#d6d6d6; font-size: 1.8rem; padding:3.5%;">
+				我的优惠券
+			</div>
+		</div>
+		<div class="row" >
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;padding:5%">
+				<div class="input-group icon-search" style="width:100%;padding-left:20px;padding-right:6px;">
+			      <input style="background:none;color:#fff;height:38px;border:none;width:70%;" type="text" class="form-control" placeholder="请输入您收到的优惠券兑换码" id="exchangeId">
+			      <span style="background:#fff100;color:#000;font-size:1rem;border-radius: 60px;display:inline-block;width:30%;margin-top:6px;text-align:center;height:26px;line-height:26px;" onclick="exchange();">
+			      	确认兑换
+			      </span>
+			     <!--  <span class="input-group-btn" style="";>
+        			<button class="btn btn-default" type="button" style="background-color:#fff100;color:#000;width:90px;height:40px;margin-left:1%;" onclick="exchange();">兑换</button>
+      			  </span> -->
+				</div>
+				<div style="font-size:1rem;color:#828282;text-align:center;margin-top:16px;height:auto;overflow:hidden;">
+					*您收到的优惠券兑换码可能位于纸质卡券中, <br />
+					您需要兑换成电子优惠券才能在手机端下单时使用。
+				</div>
+			</div>
+		</div>
+		<div class="row" style="height: 70%;overflow-y: auto;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;">
+				<div class="centent">
+					<ul style="height: 100%; margin-bottom: 0;" class="list">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/base.js"></script>
+	<script type="text/javascript" src="../js/updatapage.js"></script>
+	<script type="text/javascript">
+	window.onload = function()
+	{
+		find_coupon();
+			$("#foot_third").css({
+				color:"#fff100"
+			}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+	};
+
+	$("body").delegate('.list li','click',function(){
+
+          var product = {htmls:$(this).html()};
+
+          var data = localStorage.setItem("setSherd", JSON.stringify(product)); //点击分享的优惠卷
+
+      });
+
+
+	</script>
+</body>
+</html>

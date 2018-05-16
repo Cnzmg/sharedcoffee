@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>积分兑换</title>
+	<link rel="stylesheet" href="../asset/css/reset.css">
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../asset/css/commom.css">
+	<link rel="stylesheet" href="../css/point_change.css">
+	<link rel="stylesheet" type="text/css" href="../dist/dropload.css" />
+	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../asset/js/config.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<script type="text/javascript" src="../dist/dropload.min.js"></script>
+</head>
+<body   style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
+	<div class="container-fluid">
+		<div class="row" style="height: 10%;background:rgba(0,0,0,0.5);color:#fff; ">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="height: 100%; font-size: 2rem; padding:5%;">
+				积分兑换
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="height: 100%; font-size: 1.4rem; padding:7% 2%;text-align: right;color:#828282;">
+				<a href="point_change.html" style="color:#fff;" id="integral">当前积分余额</a>
+			</div>
+		</div>
+		<div class="row" style="height: 10%;background:rgba(0,0,0,0.5)">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" class="nav">
+				<ul  class="nav_list" style="padding:0;padding-top:5%;">
+					<li onclick="find_integral_shop(1,'find_integral_shop')" style="border-bottom:2px solid #fff100;padding-bottom:16px;width:25%;">全部</li>
+					<li onclick="find_integral_shop(1,'find_integral_shop',1)">兑换码</li>
+					<li onclick="find_integral_shop(1,'find_integral_shop',2)">优惠劵</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row" style="height: 80%;overflow-y:auto;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;">
+				<div class="centent">
+					<ul class="list" style="height: 100%;">
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript" src="../js/updatapage.js"></script>
+<script>
+	jQuery(function($){
+		find_integral_shop(1,'find_integral_shop');
+			$("#foot_third").css({
+				color:"#fff100"
+			}).children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+	})
+</script>
+</html>
