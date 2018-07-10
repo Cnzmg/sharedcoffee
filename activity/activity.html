@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>限时活动</title>
+    <link rel="stylesheet" href="./css/activity.css">
+    <script src="./javascript/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="activity-box" id="box">
+            <img class="activity-banner" id="activity_Bg" src="./images/13.png" alt="">
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        var num = [0.041,0.093,0.14,0.25,0.295,0.355,0.445,0.53,0.645,0.675,0.688,0.701,0.753];
+        var url = ['./myactivity4-5.html','../html/my_redeemCode.html','../html/my_redeemCode.html','../html/my_coupon.html','../html/my_coupon.html','../html/my_coupon.html','../luckyer/luckyer.html','../html/my_coupon.html','../html/my.html','../index.html','../html/my_wallet.html','../html/point_change.html','../html/point_change.html']
+        // console.log(url.length)
+        // var bannerBox = document.getElementById('box');
+        var bannerBox_H = document.getElementById('box').offsetHeight;
+        var t =  null;
+        // var activity_title_box = document.getElementsByClassName('activity-title-box');
+        var str = '';
+        for(var i=0;i<num.length;i++){
+            t =Math.round(bannerBox_H*num[i])-30;
+            // activity_title_box[[i]].style.top = t+'px';
+            str += '<div class="activity-title-box" style="position: absolute; left:50%; top:'+t+'px; transform:translate(-50%,0);">'+
+                        '<a class="activity-title-'+(i+1)+'" href="'+url[i]+'"></a>'+
+                    '</div>';
+            t = '';
+        }
+        // console.log(str)
+        $('#box').append(str)
+        // bannerBox= str;
+    }
+    
+</script>
+</html>

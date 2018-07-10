@@ -172,6 +172,7 @@ jzmr.free = function(){
               if(touch.pageX > (window.innerWidth - 50)){
                 $.get(httpUpData + 'send_red_packets',{userId:us_userid,userToken:us_token,type:1},function(r){
                     $('.boxshow').text(r.statusCode.msg).show();
+                    // $('.boxshow').show();
                       setTimeout(function(){
                         $('.boxshow').hide();
                         WeixinJSBridge.call('closeWindow');

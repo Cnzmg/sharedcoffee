@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+  <link rel="icon" href="bitbug_favicon.ico" type="image/x-icon" />
+  <script src="../asset/js/jquery-3.2.1.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+  <script type="text/javascript" src="../asset/js/config.js"></script>
+
+  <title>手机号验证</title>
+  <style>
+    html,body{
+      background:#F1F1F1;height:100%;width:100%;
+    }
+    .content{padding: 20px; box-sizing: border-box;background: #fff;margin:50px 26px;border-radius: 10px;box-shadow: 0px 6px 0px #DEDEDE}
+    .box{
+      height:auto;overflow:hidden;position: relative;
+    }
+    .hr{
+      height: 1px;background-color: #8A7837;width: 100%;
+    }
+    .inpt{width: 100%;height: 30px;border: none;}
+    .goto{position: absolute;right: 0;bottom:0;padding: 3px;height: 30px;cursor:pointer;}
+    .btn-define{background: #BBB9AF;margin-top: 10px;}
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+			<div class="row">
+          <div class="content">
+            <div class="box">
+              <p>填写手机号码获取优惠</p>
+              <h3>您的手机号是？</h3>
+              <input type="tel" id="phone" class="inpt" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11" placeholder="请输入手机号码">
+              <div class="goto" onclick="jzmr.phcode()">发送验证码</div>
+              <div class="hr"></div>
+            </div>
+
+            <div class="box">
+              <h3>验证码</h3>
+              <input type="tel" id="codemessage" class="inpt" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6" placeholder="请输入验证码">
+              <div class="hr"></div>
+            </div>
+
+            <div class="btn btn-define" style="visibility:hidden;margin-bottom:10px;"></div>
+            <div class="btn btn-define" style="float:right;" onclick="jzmr.getphcode()">提交</div>
+          </div>
+			</div>
+</div>
+<script type="text/javascript" src="./javascript/vertion.js">
+
+</script>
+</body>
+</html>
