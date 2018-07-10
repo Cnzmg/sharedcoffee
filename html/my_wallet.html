@@ -32,13 +32,12 @@
 	</div>
 	<script type="text/javascript" src="../js/base.js"></script>
 	<script type="text/javascript">
-	window.onload = function()
-	{
-    $("#foot_third").css({
-        color:"#fff100"
-    }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
-		find_balance();
-	};
+	$(function(){
+	    $("#foot_third").css({
+	        color:"#fff100"
+	    }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+		jzm.find_balance();
+	});
 	</script>
 </body>
 </html>

@@ -13,7 +13,7 @@ var transferStation = "http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html"; 
 var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ transferStation +'&response_type=code&scope=snsapi_userinfo&state=' +  window.location.href;
 var wxUribase = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ transferStation +'&response_type=code&scope=snsapi_base&state=' +  window.location.href;
 var jzm = {},geolocation,longitude,latitude,__load = window;
-var statusCode = "400|997|999|4444|1005";
+var statusCode = "400|997|999|4444|1005|1014";
 var stateCode = new RegExp(statusCode);
 jzm.getQueryString = function(name)
 {
@@ -26,9 +26,10 @@ jzm.Preservation = function(reg){console.log(reg);localStorage.setItem("token",J
 jzm.Error = function (err){  //错误信息
   console.log(err);
   alert(err.statusCode.msg);
-  localStorage.clear();
-  err.statusCode.status == 1014 ? __load.location = "../index.html" : null;
-  err.statusCode.status == 4444 ? document.write(err.statusCode.msg) : window.location.href = uri + "asset/html/404.html?uri=" + encodeURI(window.location.href.split('?')[0]);
+  if(err.statusCode.status == 1005){localStorage.clear();};
+  __load.location = "/sharedcoffee/index.html";
+//err.statusCode.status == 1014 ? __load.location = "../index.html" : null;
+//err.statusCode.status != 1005 ? console.log(err.statusCode.msg) : window.location.href = uri + "asset/html/404.html?uri=" + encodeURI(window.location.href.split('?')[0]);
 };
 jzm.getMapAPI = function(e){//获取首次登录坐标
   geolocation = new BMap.Geolocation();
@@ -100,7 +101,7 @@ jzm.getUserToken = function()
               jzm.paraMessage('Preservation',reg);
               if(reg.type == 1)
                 {
-                  jzm.paraMessage('getMapAPI',reg) ? setTimeout(function(){window.location.href="./activity/myactivity4-5.html"},5000) : null;
+                  jzm.paraMessage('getMapAPI',reg) ? setTimeout(function(){window.location.href=uri+"activity/myactivity4-5.html?activity_uri=" + window.location.href.split('?')[0]},5000) : null;
                 };
                 jzm.getQueryString("machinenumber") ? jzm.paraMessage('luckdrawer',{token:reg.user_token,id:reg.user_id}) : null;
           }
@@ -218,8 +219,7 @@ jzm.sharedLoaw = (function(){
 })();
 
 //时间戳转换方法
-function getDateTime(data)
-{
+jzm.getDateTime = function(data){
     var date = new Date(data);   //如果date为10位不需要乘1000
     var Y = date.getFullYear() + '/';
     var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '/';
@@ -307,8 +307,7 @@ jzm.messager = (function(){
     })
 })();
 //每日抽奖活动
-jzm.raffle_init = function()
-{
+jzm.raffle_init = function(){
 	var _raff,_init = ustoken;   //用户权限指令
 	$.ajax({
 		url: httpUpData +'raffle_init',

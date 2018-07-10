@@ -44,8 +44,7 @@
 				};
 				jzm.Preservation = function(reg){console.log(reg);localStorage.setItem("token",JSON.stringify({token:reg.user_token,userid:reg.user_id,Jurisdiction:true}));};
 				jzm.Error = function (err){  //错误信息
-					console.log(err);
-					// document.write(err.statusCode.msg);
+					alert("err_code:" + err.statusCode.status +"err_msg:" + err.statusCode.msg);
 					localStorage.clear();
 					__load.location.href = __load.location.href.split('?')[0];
 				};
@@ -99,7 +98,7 @@
 							 }
 					)}
 					$.ajax({
-						url: httpUpData + 'create_journal_order',
+						url: httpUpData + 'create_click_farming_order', //create_journal_order create_click_farming_order
 						type: 'get',
 						dataType: 'json',
 						async:false,

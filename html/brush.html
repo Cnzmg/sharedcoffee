@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+
+	<meta name="description" content="Violate Responsive Admin Template">
+	<meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+<title>限时活动</title>
+<link rel="stylesheet" href="css/red-packet.css">
+<link rel="icon" href="bitbug_favicon.ico" type="image/x-icon" />
+<script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+<script language="javascript" type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+</head>
+<body>
+	<div>
+		<div class="box">
+			<div class="red">
+			    <span 	class="red01" style="background-image: url(images/13.png);">
+			    <h1 class="banner">
+					抢红包
+				</h1>
+			    </span>
+			    <a class="red-a" href="#" onclick="jzm.wxPlay()">
+			    	<button class="redbutton" type="领取红包">拆红包</button>
+			    </a>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+				var jzm = {},geolocation,longitude,latitude,__load = window,httpUpData = 'http://39.108.49.246:8086/',statusCode = "400|997|999|4444|1005|1003|1068",stateCode = new RegExp(statusCode);
+				var transferStation = "http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html"; // 测试服授权微信中转站
+				var wxUriWoo = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ transferStation +'&response_type=code&scope=snsapi_userinfo&state=' +  __load.location.href;
+				var wxUriBox = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0f7fff1e4f0852f5&redirect_uri='+ transferStation +'&response_type=code&scope=snsapi_userinfo&state=' +  __load.location.href.split('?')[0];
+				jzm.getQueryString = function(name)
+				{
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+						var r = window.location.search.substr(1).match(reg);
+						if (r != null) return unescape(r[2]);
+						return null;
+				};
+				jzm.Preservation = function(reg){console.log(reg);localStorage.setItem("token",JSON.stringify({token:reg.user_token,userid:reg.user_id,Jurisdiction:true}));};
+				jzm.Error = function (err){  //错误信息
+					alert("err_code:" + err.statusCode.status +"err_msg:" + err.statusCode.msg);
+					localStorage.clear();
+					__load.location.href = __load.location.href.split('?')[0];
+				};
+				jzm.WeChatCoffeeBox = function(){
+						$.ajax({
+							url: httpUpData + 'login_CoffeeBox',
+							type: 'get',
+							dataType: 'json',
+							async:false,
+							data: {code: jzm.getQueryString('code'),clickFarmUpper:jzm.getQueryString('uid') ? jzm.getQueryString('uid') : null,userId:JSON.parse(localStorage.getItem("token")).userid,userToken:JSON.parse(localStorage.getItem("token")).token}
+						})
+						.done(function(rex){
+								stateCode.test(rex.statusCode.status) ? jzm.Error(rex) : localStorage.setItem("cbCoffee",JSON.stringify({Jurisdiction:false}));
+						})
+				};
+				jzm.WeChatLogin = function() {  //微信授权登陆接口
+					$.ajax({
+						url: httpUpData + 'WeChat_login',
+						type: 'get',
+						dataType: 'json',
+						async:false,
+						data: {code: jzm.getQueryString('code')}
+					})
+					.done(function(reg) {
+							stateCode.test(reg.statusCode.status) ? jzm.Error(reg) : (
+							!jzm.getQueryString('v') ? null :
+							(function(){
+								jzm.Preservation(reg);__load.location.href = wxUriBox +"?box=" + new Date().getTime();
+							})()
+						)
+					})
+				};
+
+				var utoken = JSON.parse(localStorage.getItem("token"));   //用户权限指令
+				!utoken ? (!jzm.getQueryString("code") ? __load.location.href = wxUriWoo + "?v=" + new Date().getTime() : jzm.WeChatLogin()) : (JSON.parse(localStorage.getItem("cbCoffee")) ? null : jzm.WeChatCoffeeBox());
+				var us = JSON.parse(localStorage.getItem("token"));   //用户权限指令
+
+				jzm.wxPlay = function(){
+					jzm.pay = function(ev){
+						WeixinJSBridge.invoke(
+							 'getBrandWCPayRequest', {
+									 "appId":ev.appId,         //公众号名称，由商户传入
+									 "nonceStr":ev.nonceStr,   //随机串
+									 "package":ev.package,     //预付单号
+									 "paySign":ev.paySign,     //微信签名
+									 "signType":ev.signType,   //微信签名方式：
+									 "timeStamp":ev.timeStamp //时间戳，自1970年以来的秒数
+							 },
+							 function(res){
+									 res.err_msg == "get_brand_wcpay_request:ok" ? console.log(res)/*/ 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。/*/ : console.log(res.err_msg);
+							 }
+					)}
+					$.ajax({
+						url: httpUpData + 'create_journal_order', //create_journal_order create_click_farming_order
+						type: 'get',
+						dataType: 'json',
+						async:false,
+						data: {userToken: us.token,userId:us.userid}
+					})
+					.done(function(reg) {
+							stateCode.test(reg.statusCode.status) ? jzm.Error(reg) : jzm.pay(reg);
+					})
+				};
+				jzm.sharedLoaw = (function(){
+					$.get(httpUpData + 'share_coupon_verification?userId='+ us.userid +'&userToken='+ us.token +'&url='+encodeURIComponent(__load.location.href.split('?')[0]),function(data,status){
+							wx.config({
+									debug: false, // 调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+									appId: 'wx71c7dc4f5208bb07', // 必填，公众号的唯一标识
+									timestamp: data.timestamp, // 必填，生成签名的时间戳
+									nonceStr: data.nonceStr, // 必填，生成签名的随机串
+									signature: data.signature,// 必填，签名，见附录1
+									jsApiList: ['onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+							});
+							wx.ready(function (){
+									wx.onMenuShareAppMessage({ //微信分享朋友
+									title: "咖啡蜗", // 分享标题
+									desc: "购买产品", // 分享描述
+									link: __load.location.href.split('?')[0] + "?uid=" + (jzm.getQueryString('uid') ? jzm.getQueryString('uid') : us.userid), // 分享链接
+									imgUrl: "http://www.cbcoffee.cn/sharedcoffee/coffee.png", // 分享图标
+									type: '', // 分享类型,music、video或link，不填默认为link
+									dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+									success: function (reg) {
+											console.log(reg);
+									},
+									cancel: function (err) {
+											console.log(err);
+									}
+								});
+							});
+					});
+				})();
+	</script>
+</body>
+</html>

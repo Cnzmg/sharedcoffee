@@ -56,13 +56,7 @@
 			 //初始化百度地图
 		      var map = new BMap.Map("allmap");// 创建Map实例
 		      var obj = JSON.parse(localStorage.getItem("my_weizhi"));
-		      if(!obj)
-		      	{
-		      		setTimeout(function()
-		      			{
-		      				$(".btn").click();
-		      			},	2500);
-		      	};
+		      if(!obj){	setTimeout(function(){$(".btn").click();},	2500); 	};
 		      var my_lng = obj.my_lng;
 		      var my_lat = obj.my_lat;
 		      var radius = 2000000000000000;

@@ -58,7 +58,7 @@ $(function(){
           $("#couponId").val(str[1]);
           $("#couponMoney").val(str[2]);
 
-          $("#consum").text("-￥"+ str[2] / 100);   //优惠金额
+          $("#consum").html("-￥"+ str[2] / 100 +'<img style="width:20%;margin-left:10.1%;" src="../image/lb/pay/right.png" alt="" /></span>');   //优惠金额
           $("#consumPay").text("-￥"+ str[2]);   //已优惠金额
           if ($("#consumMoney").val() - str[2] < 0)
             {
@@ -81,4 +81,8 @@ $(function(){
       $(".mask_layer").remove();
 
     });
+    $("body").delegate('.mask_layer','click',function(e){
+    	$(".conmoney").hide(100);
+      $(".mask_layer").remove();
+    })
 })

@@ -9,10 +9,13 @@
 	<link rel="stylesheet" href="../asset/css/commom.css">
 	<link rel="stylesheet" type="text/css" href="../dist/dropload.css" />
 	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+	<!-- 百度地图jsapi -->
+	  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy"></script>
+	  <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+	<!-- 百度地图jsapi -->
 	<script type="text/javascript" src="../asset/js/config.js"></script>
-	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 	<script type="text/javascript" src="../dist/dropload.min.js"></script>
-	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 	<style type="text/css">
 		.icon-search
 		{
@@ -37,7 +40,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%;padding:5%">
 				<div class="input-group icon-search" style="width:100%;padding-left:20px;padding-right:6px;">
 			      <input style="background:none;color:#fff;height:38px;border:none;width:70%;" type="text" class="form-control" placeholder="请输入您收到的优惠券兑换码" id="exchangeId">
-			      <span style="background:#fff100;color:#000;font-size:1rem;border-radius: 60px;display:inline-block;width:30%;margin-top:6px;text-align:center;height:26px;line-height:26px;" onclick="exchange();">
+			      <span style="background:#fff100;color:#000;font-size:1rem;border-radius: 60px;display:inline-block;width:30%;margin-top:6px;text-align:center;height:26px;line-height:26px;" onclick="jzm.exchange();">
 			      	确认兑换
 			      </span>
 			     <!--  <span class="input-group-btn" style="";>
@@ -59,26 +62,19 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="../js/base.js"></script>
 	<script type="text/javascript" src="../js/updatapage.js"></script>
+	<script src="/sharedcoffee/js/base.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	window.onload = function()
-	{
-		find_coupon();
-			$("#foot_third").css({
-				color:"#fff100"
-			}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
-	};
-
+	$(function(){
+		jzm.find_coupon('find_coupon');
+		$("#foot_third").css({
+			color:"#fff100"
+		}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+	});
 	$("body").delegate('.list li','click',function(){
-
-          var product = {htmls:$(this).html()};
-
-          var data = localStorage.setItem("setSherd", JSON.stringify(product)); //点击分享的优惠卷
-
-      });
-
-
+      var product = {htmls:$(this).html()};
+      var data = localStorage.setItem("setSherd", JSON.stringify(product)); //点击分享的优惠卷
+   	});
 	</script>
 </body>
 </html>

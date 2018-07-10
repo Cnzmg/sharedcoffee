@@ -18,3 +18,6 @@
 	height: 100%;
 	margin-bottom: 0;
 }
+.tabs_action{
+	border-bottom:2px solid #fff100;padding-bottom:16px;width:25%;
+}

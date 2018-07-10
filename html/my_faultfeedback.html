@@ -35,9 +35,15 @@
             </div>
         </div>
 
-        <div class="btn btn-default" style="margin-left:60%;background:#fff100;padding:2% 10%;border-radius:20px;color:#000;margin-top:3%;" onclick="add_fault_feedback()">提交</div>
+        <div class="btn btn-default" style="margin-left:60%;background:#fff100;padding:2% 10%;border-radius:20px;color:#000;margin-top:3%;" onclick="jzm.add_fault_feedback()">提交</div>
     </div>
     <script type="text/javascript" src="../js/base.js"></script>
-
+	<script type="text/javascript">
+    $(function(){
+        $("#foot_third").css({
+            color:"#fff100"
+        }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
+    });
+    </script>
 </body>
 </html>

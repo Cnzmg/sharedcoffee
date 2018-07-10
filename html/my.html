@@ -11,7 +11,7 @@
 	<script src="../asset/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../asset/js/config.js"></script>
 	<script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
-	<script type="text/javascript" src="../js/base.js"></script>
+	<script type="text/javascript" src="../js/base.js?v=123"></script>
 	<style type="text/css">
 	.phmessage{
 		animation:myfirst 5s infinite;
@@ -79,7 +79,7 @@
 <body  style="background:url(../image/lb/background.jpg) repeat; background-size: 100%;">
 	<div class="container-fluid">
 		<div class="row my_bg">
-			<i class="phmessage" onclick='window.location.href="../activity/myactivity4-5.html"' style="display: none;font-size:10px;position:absolute;top:100%;left:80%;margin-top:-28%;margin-left:-25%;text-align:center;color:#fff;background:url(../image/free-logo.png);width:100px;height:65px;background-size: 100% 100%;padding:7px;box-sizing:border-box;border-radius: 10px;z-index:1;"><!-- 免<br />费<br />喝 --></i>
+			<i class="phmessage" onclick='window.location.href="/sharedcoffee/activity/myactivity4-5.html?activity_uri="+ window.location.href.split("?")[0]' style="display: none;font-size:10px;position:absolute;top:100%;left:80%;margin-top:-28%;margin-left:-25%;text-align:center;color:#fff;background:url(../image/free-logo.png);width:100px;height:65px;background-size: 100% 100%;padding:7px;box-sizing:border-box;border-radius: 10px;z-index:1;"><!-- 免<br />费<br />喝 --></i>
 
 			<div style="width:22.1%;margin:0 auto;position:absolute;top:50%;left:50%;margin-top:-15%;margin-left:-11%;text-align:center;color:#fff;overflow:hidden;">
 				<img id="userImg" src="../image/lb/my/_0007_Shape-151.png" width="100%" class="img-circle" alt="" />
@@ -139,11 +139,10 @@
 	</div>
 
 </body>
-
 	<script>
 		jQuery(function($){
 			JSON.parse(localStorage.getItem("token")).userStatus == 0 ? $(".my_bg").append('<div style="color:#fff;width:100%;height:100%;background:#ccc;z-index:999;position:absolute;background: rgba(0,0,0,0.7);text-align:center; line-height:100px;">当前账户已经被冻结！如有疑问？<a href="javascript:void(0);">联系客服</a></div>') : null;
-			user_info();
+			jzm.user_info();
 			$("#foot_third").css({
 				color:"#fff100"
 			}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");

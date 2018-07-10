@@ -19,3 +19,6 @@
 	margin-bottom: 0;
 	overflow-y: auto;
 }
+.tabs_action{
+	border-bottom: 2px solid rgb(255, 241, 0); padding-bottom: 16px; width: 25%; color: rgb(255, 241, 0);
+}

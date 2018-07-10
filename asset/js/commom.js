@@ -22,7 +22,7 @@ function get_position(e){
     var obj = {lng1:lng, lat1:lat,add:address};
     localStorage.setItem("weizhi", JSON.stringify(obj));
     
-    window.location.href = "http://www.cbcoffee.cn/sharedcoffee/html/quipment_address.html";
+    window.location.href = "/sharedcoffee/html/quipment_address.html";
 }
 //根据检索范围设置缩放
 function setZoom(points,map){

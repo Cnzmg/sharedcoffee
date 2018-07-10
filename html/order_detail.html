@@ -56,13 +56,20 @@
 	<script type="text/javascript">
         var lang = [];
         var ling = [];
-
 		jQuery(function(){
-			find_order_detail();
+			jzm.find_order_detail();
             $("#foot_third").css({
                 color:"#fff100"
             }).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
 			adds=JSON.parse(localStorage.getItem("my_weizhi"));
+			if(!adds){
+				// 百度地图 获取当前ip下的位置
+			      var geolocation = new BMap.Geolocation();
+			      geolocation.getCurrentPosition(function(r){
+			          var locationobj = {my_lng:r.longitude,my_lat:r.latitude};   //当前位置
+			          localStorage.setItem("my_weizhi", JSON.stringify(locationobj));      //存储
+			      });
+			}
             var my_lng = adds.my_lng;
             var my_lat = adds.my_lat;
             var radius = 2000000000000000;
@@ -73,9 +80,6 @@
               success:function(res){
                   lang = res.contents[0].location[0];
                   ling = res.contents[0].location[1];
-                  console.log(lang);
-                  console.log(ling);
-                  console.log(res);
                   $(".tip").css({
                       zIndex: 1,
                       fontFamily:"kaiti",
@@ -84,7 +88,6 @@
                   });
                   $(".title").append(res.contents[0].title);
                   $(".address").append(res.contents[0].address);
-
                   if(res.status != 0)
                       {
                           $(".address").append("附近没有咖啡机~~");
@@ -92,14 +95,10 @@
               }
           })
 				});
-        function getAddress()
-        {
+        function getAddress(){
             var Jsonobj = JSON.stringify({lng1:lang,lat1:ling});
             localStorage.setItem("weizhi",Jsonobj);
         };
 	</script>
 </body>
 </html>
-<!-- 486.4
-815.89
-125.20 -->
