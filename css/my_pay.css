@@ -42,3 +42,12 @@
 .tabs_action{
 	border-bottom:2px solid #fff100;padding-bottom:16px;width:25%;
 }
+.num_first_box{
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:8;
+}

@@ -51,6 +51,17 @@
 				</ul>
 			</div>
 		</div>
+		<div class="row container_fluid_box" id="container_fluid_box">
+			<div class="container_fluid_box_banner">
+				<div class="container_fluid_box_banner_txt">
+					<span>可在</span><a href="./my_redeemCode.html">会员中心>兑换码</a><span>查看</span>
+				</div>
+				<div class="container_fluid_box_banner_btm" id="container_fluid_box_banner_list">
+					<div>配方已经全面升级，小蜗为您准备了通用兑换券</div>
+					<div>您可以兑换任意产品哦！</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script type="text/javascript" src="../js/base.js"></script>
 	<script type="text/javascript">
@@ -80,12 +91,12 @@
               success:function(res){
                   lang = res.contents[0].location[0];
                   ling = res.contents[0].location[1];
-                  $(".tip").css({
+                  	$(".tip").css({
                       zIndex: 1,
                       fontFamily:"kaiti",
                       fontWeight:"bold",
                       fontSize:"1.2rem"
-                  });
+                  	});
                   $(".title").append(res.contents[0].title);
                   $(".address").append(res.contents[0].address);
                   if(res.status != 0)
@@ -98,7 +109,11 @@
         function getAddress(){
             var Jsonobj = JSON.stringify({lng1:lang,lat1:ling});
             localStorage.setItem("weizhi",Jsonobj);
-        };
+		};
+		$('#container_fluid_box').click(function(){
+			$('#container_fluid_box').hide()
+		})
 	</script>
 </body>
+
 </html>

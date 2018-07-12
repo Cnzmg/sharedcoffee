@@ -26,9 +26,6 @@
         </div> 
 
     <script type="text/javascript">
-
-        var id = getQueryString("rCouponIds");
-
         //**************微信分享函数****************
         $.get(httpUpData + 'share_coupon_verification?userId='+ us_userid +'&userToken='+ us_token +'&url='+encodeURIComponent(location.href.split('#')[0]),function(data,status){
             wx.config({
@@ -44,7 +41,7 @@
                 wx.onMenuShareAppMessage({ //微信分享朋友
                 title: "咖啡蜗送你张优惠券", // 分享标题
                 desc: "优惠的生活，便捷的服务，尽在咖啡蜗！", // 分享描述
-                link: "http://www.cbcoffee.cn/sharedcoffee/index.html?rCouponId=" + id, // 分享链接
+                link: "http://www.cbcoffee.cn/sharedcoffee/index.html?rCouponId=" + jzm.getQueryString("rCouponIds"), // 分享链接
                 imgUrl: "http://www.cbcoffee.cn/sharedcoffee/coffee.png", // 分享图标
                 type: '', // 分享类型,music、video或link，不填默认为link
                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空

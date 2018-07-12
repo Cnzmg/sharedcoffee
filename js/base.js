@@ -377,7 +377,6 @@ jzm.user_info = function(){
     .always(function() {
         console.log("complete");
     });
-
 }
 //我的模块 用户签到信息
 jzm.sign_in = function(){
@@ -413,7 +412,6 @@ jzm.sign_in = function(){
                         };
 
                     }
-
         str += '</ul>'+
             '</div>'+
             '<div class="Registration" style="text-align: right; margin-top: 4%;" >';
@@ -451,6 +449,7 @@ jzm.find_order_detail = function(e){
             };
             var pmshow = [];
             var color = [];
+            console.log(reg)
             //支付状态 //兑换状态
             if(reg.orderInfo.paymentStatus == 1){
                     reg.orderInfo.paymentStatus = "未支付";
@@ -474,11 +473,23 @@ jzm.find_order_detail = function(e){
                         color = "#828282";
                         pmshow = "no_action";
                     }
+                else if(reg.redeemInfo.redeemStatus == 4){
+                    reg.redeemInfo.paymentStatus = '已过期';
+                    color = "#9f0802";
+                }
+                else if(reg.redeemInfo.redeemStatus==5){
+                    reg.orderInfo.paymentStatus = "已失效";
+                    color = "#9f0802";
+                    var str = '<div class="container_fluid_box_banner_btm_in">亲，因商品<span style="font-size:14px;">（'+reg.productInfo.productName.split(',')[0]+'）</span></div>'
+                    $('#container_fluid_box').show();
+                   $('#container_fluid_box_banner_list').prepend(str);
+                }
             }else if(reg.orderInfo.paymentStatus == 3){
                     reg.orderInfo.paymentStatus = "已退款";
                     color = "#9f0802";
                     pmshow = "no_action";
-            }else{
+            }else 
+            {
                     reg.orderInfo.paymentStatus = "已关闭";
                     pmshow = "no_action";
                     color = "#828282";
@@ -500,7 +511,6 @@ jzm.find_order_detail = function(e){
                 if (reg.orderInfo.paymentStatus == "未支付") {
                     str += '<a href="order_pay.html?orderId='+ orderId +'" style="float:right;color:#000;font-size:1rem;margin-right:10%;display:inline-block;padding:1% 4%;background:#fff100;border-radius:10px;">立即支付</a>';
                 };
-
                 str += '</div>';
 
             $(".num_first").html(str);
@@ -546,9 +556,6 @@ jzm.find_order_detail = function(e){
                     '</li>';
 
             $(".list_foot").html(liststr);
-
-            console.log("success");
-            $(".mask_layer").remove();
         })
         .fail(function() {
             console.log("error");
