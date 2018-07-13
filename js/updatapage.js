@@ -1,3 +1,4 @@
+// ***************************已修改开始***********************************
 ;jzm.find_order_show = function(u,p,t){
 	var itemIndex = 0,tabLoadEnd;
     // tab
@@ -66,25 +67,31 @@
                                         if (reg.myOrderList[i].redeemStatus == 2){
                                                 reg.myOrderList[i].paymentStatus =  '已兑换';
                                                 color = "#828282";
+                                                code = "no_action";
+                                                
                                             }
                                         else if(reg.myOrderList[i].redeemStatus == 3){
                                                 reg.myOrderList[i].paymentStatus =  '制作中';
                                                 color = "#9f0802";
+                                                code = "no_action";
                                             }
                                         else if(reg.myOrderList[i].redeemStatus == 4){
                                                 reg.myOrderList[i].paymentStatus =  '已过期';
                                                 color = "#9f0802";
+                                                code = "no_action";
                                             }
                                             else if(reg.myOrderList[i].redeemStatus == 5){
                                                 reg.myOrderList[i].paymentStatus =  '已失效';
                                                 color = "#9f0802";
+                                                code = "no_action";
                                             }
                                         else{
                                                 reg.myOrderList[i].paymentStatus =  '未兑换';
                                                 color = "#9f0802";
+                                                code = "action";
                                             };
                                         
-                                        code = "action";
+                                        
                                     }
                                     else if(reg.myOrderList[i].paymentStatus == 3){
                                         reg.myOrderList[i].paymentStatus =  '已退款';
@@ -121,18 +128,14 @@
 
                                }
                             var str = reg.myOrderList[i].flavorShow;
-                            if(reg.myOrderList[i].paymentStatus=='已失效'){
-                                Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                            if(reg.myOrderList[i].paymentStatus=='已失效'){                     
+                                Li += '<li class="num_first" id="container_fluid_box" onclick=container_fluid_box('+counter+','+itemIndex+',"'+reg.myOrderList[i].productName.split(',')[0]+'") style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                                 for(var key in str){
                                     Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
                                 }
                                 Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
-                                if(code == "action"){
-                                        Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">兑换码</span><span style="flex: 2;float:right;font-size:1.6rem;">'+ reg.myOrderList[i].redeemCode +'</span></p>';
-                                   };
                                 
-                                Li += '</div>';
-                                
+                                Li += '</div>'; 
                             }else{
                                 Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                             for(var key in str){
@@ -245,16 +248,13 @@
                                }
                             var str = reg.myOrderList[i].flavorShow;
                             if(reg.myOrderList[i].paymentStatus=='已失效'){
-                                Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                                Li += '<li class="num_first" id="container_fluid_box" onclick=container_fluid_box('+counter+','+itemIndex+',"'+reg.myOrderList[i].productName.split(',')[0]+'") style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                                 for(var key in str){
                                     Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
                                 }
                                 Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
-                                if(code == "action"){
-                                        Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">兑换码</span><span style="flex: 2;float:right;font-size:1.6rem;">'+ reg.myOrderList[i].redeemCode +'</span></p>';
-                                   };
                                 
-                                Li += '</div>';
+                                Li += '</div>'; 
                             }else{
                                 Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                                 for(var key in str){
@@ -366,16 +366,13 @@
                                }
                                var str = reg.myOrderList[i].flavorShow;
                                if(reg.myOrderList[i].paymentStatus=='已失效'){
-                                   Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
-                                   for(var key in str){
-                                       Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
-                                   }
-                                   Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
-                                   if(code == "action"){
-                                           Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">兑换码</span><span style="flex: 2;float:right;font-size:1.6rem;">'+ reg.myOrderList[i].redeemCode +'</span></p>';
-                                      };
-                                   
-                                   Li += '</div>';
+                                Li += '<li class="num_first" id="container_fluid_box" onclick=container_fluid_box('+counter+','+itemIndex+',"'+reg.myOrderList[i].productName.split(',')[0]+'") style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                                for(var key in str){
+                                    Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
+                                }
+                                Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
+                                
+                                Li += '</div>'; 
                                }else{
                                    Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                                    for(var key in str){
@@ -487,16 +484,13 @@
                                }
                                var str = reg.myOrderList[i].flavorShow;
                                if(reg.myOrderList[i].paymentStatus=='已失效'){
-                                   Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
-                                   for(var key in str){
-                                       Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
-                                   }
-                                   Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
-                                   if(code == "action"){
-                                           Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">兑换码</span><span style="flex: 2;float:right;font-size:1.6rem;">'+ reg.myOrderList[i].redeemCode +'</span></p>';
-                                      };
-                                   
-                                   Li += '</div>';
+                                    Li += '<li class="num_first" id="container_fluid_box" onclick=container_fluid_box('+counter+','+itemIndex+',"'+reg.myOrderList[i].productName.split(',')[0]+'") style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                                    for(var key in str){
+                                        Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
+                                    }
+                                    Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
+                                    
+                                    Li += '</div>'; 
                                }else{
                                    Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
                                    for(var key in str){
@@ -537,6 +531,7 @@
         threshold : 50
     });
 };
+// ***************************已修改结束***********************************
 jzm.find_integral = function(u,p,t){
 	var itemIndex = 0,tabLoadEnd;
     // tab
@@ -1023,6 +1018,7 @@ jzm.find_integral_shop = function(u,p,t){
     });
 };
 //我的兑换码
+// *************已修改开始******************
 jzm.find_c_redeem = function(u){
 	var counter = 0;
 	var dropload = $('.centent').dropload({
@@ -1203,3 +1199,4 @@ jzm.find_coupon = function(u,p,t){
         }
     });
 };
+// *************已修改结束******************

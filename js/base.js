@@ -12,7 +12,7 @@ jzm.find_product_detail = function()//产品的初始化口味选择
       stateCode.test(reg.statusCode.status) ? jzm.Error(reg) : (function(){
         var num = [] /*料仓id*/,
         sing = []  /*口味名称*/,
-        str = ""
+        str = "",
         pm /*是否可以调整冷热0可以*/,
         numtatch = []/*初始化口味条数*/,
         flavorId = []/*初始化口味id*/,
@@ -435,6 +435,7 @@ jzm.sign_in = function(){
 
 }
 //查询订单详情
+// ****************已修改开始****************
 jzm.find_order_detail = function(e){
     if(!e){
         $.ajax({
@@ -556,6 +557,9 @@ jzm.find_order_detail = function(e){
                     '</li>';
 
             $(".list_foot").html(liststr);
+
+            console.log("success");
+            $(".mask_layer").remove();
         })
         .fail(function() {
             console.log("error");
@@ -567,6 +571,7 @@ jzm.find_order_detail = function(e){
         window.location.href = "../html/order_detail.html?orderId=" + e;
     };
 }
+// *****************已修改结束**********************
 //账户余额
 jzm.find_balance = function(){
     $.ajax({

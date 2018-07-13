@@ -44,6 +44,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="row container_fluid_box" id="container_fluid_box2">
+			<a href="./my_redeemCode.html" style="display:block;">
+				<div class="container_fluid_box_banner">
+					<div class="container_fluid_box_banner_txt">
+						<span>可在</span><span class="my">会员中心>兑换码</span><span>查看</span>
+					</div>
+					<div class="container_fluid_box_banner_btm" id="container_fluid_box_banner_list">
+							<div class="container_fluid_box_banner_btm_in">亲，因商品<span id="container_fluid_box_banner_btm_txt" style="font-size:14px;"></span></div>
+						<div>配方已经全面升级，小蜗为您准备了通用兑换券</div>
+						<div>您可以兑换任意产品哦！</div>
+					</div>
+				</div>
+			</a>
+	</div>
 	<script type="text/javascript" src="../dist/dropload.min.js"></script>
 	<script src="../js/base.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="../js/updatapage.js"></script>
@@ -54,6 +68,19 @@
 				color:"#fff100"
 			}).children("span").children("img").attr("src","http://www.cbcoffee.cn/sharedcoffee/image/Home_action.png");
 			jzm.find_order_show("find_order",0,4);
+			
 		});
+		console.log(us_userid)
+		//*********修改了**************
+		function container_fluid_box(counter,itemIndex,name){
+			console.log(name)
+			$('#container_fluid_box2').show();
+			$('#container_fluid_box_banner_btm_txt').html('('+name+')');
+		}
+	
+		$('#container_fluid_box2').click(function(){
+			$('#container_fluid_box2').hide();
+		})
+	//*********修改了**************
 	</script>
 </html>

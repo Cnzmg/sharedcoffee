@@ -151,7 +151,10 @@ jzm.getUserToken = function()
                console.log(reg.statusCode.msg);
                jzm.Error(reg);
           };
-    });
+    })
+    .fail(function(err){
+    	__load.href='/sharedcoffee/asset/html/404.html';
+    })
 };
 
 var utoken = JSON.parse(localStorage.getItem("token"));   //用户权限指令
@@ -163,19 +166,19 @@ var utoken = JSON.parse(localStorage.getItem("token"));   //用户权限指令
 $(function(){
     var Div = '<div id="menu" class="row navbar-fixed-bottom" style="border-top: 1px solid #8c8c8c;color:#fff; text-align: center; padding-left:6.3%; padding-right:6.3%;  background-color: #000; height:8%;">'+
       '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style=" height:100%; " >'+
-         '<div onclick=window.location.href="'+ uri +'index.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_first" >'+
+         '<div onclick=window.location.href="/sharedcoffee/index.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_first" >'+
             '<span class="action" style="display: block;"><img style="width:30%;" src="'+ uri +'image/coffee.png" /></span>'+
             '<span style="font-size:1rem;">咖啡菜单</span>'+
           '</div>'+
       '</div>'+
       '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style=" height:100%; ">'+
-          '<div onclick=window.location.href="'+ uri +'html/near.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_second" >'+
+          '<div onclick=window.location.href="/sharedcoffee/html/near.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_second" >'+
            '<span style="display: block;"><img style="width:30%;" src="'+ uri +'image/location.png" /></span>'+
             '<span style="font-size:1rem;">附近寻机</span>'+
           '</div>'+
       '</div>'+
       '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style=" height:100%; ">'+
-          '<div onclick=window.location.href="'+ uri +'html/my.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_third">'+
+          '<div onclick=window.location.href="/sharedcoffee/html/my.html?v='+ jzm.RanNum() +'" style="color:#fff; height:100%; padding-top:6%;" id="foot_third">'+
             '<span style="display: block;"><i class="msg"></i><img style="width:30%;" src="'+ uri +'image/Home.png" /></span>'+
             '<span style="font-size:1rem;">会员中心</span>'+
           '</div>'+
