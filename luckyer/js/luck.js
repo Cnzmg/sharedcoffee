@@ -2,7 +2,7 @@
 //每日抽奖活动
 jzm.raffle_init = function()
 {
-	var _raff,_init = UserIdToken;   //用户权限指令
+	var _raff,_init = ustoken;   //用户权限指令
 	$.ajax({
 		url: httpUpData +'raffle_init',
 		type: 'GET',

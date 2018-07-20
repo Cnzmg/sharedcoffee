@@ -15,20 +15,17 @@
   <script language="javascript" type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
   <script type="text/javascript">
     // 百度地图 获取当前ip下的位置
-      var geolocation = new BMap.Geolocation();
+      if(!localStorage.getItem("my_weizhi")){
+      	var geolocation = new BMap.Geolocation();
       geolocation.getCurrentPosition(function(r){
           var locationobj = {my_lng:r.longitude,my_lat:r.latitude};   //当前位置
           localStorage.setItem("my_weizhi", JSON.stringify(locationobj));      //存储
       });
+      }
   </script>
 </head>
 <body style="background:url(../image/lb/background.jpg) repeat;color:#fff;background-size: 100%;">
   <div class="container-fluid">
-  	<!-- div class="row" style="height: 10%;background:rgba(0,0,0,1);">
-  		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%; font-size: 2rem; font-weight: bold; padding:5%;">
-       			设备地点
-      		</div>
-  	</div> -->
   	<div class="row" style="height: 100%;">
   		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 100%; position: relative;">
           <div style="margin-bottom: 0;z-index:99999999;width:100%; padding:3%;color:#fff;border-bottom:1px solid #828282;text-align:center;">
@@ -74,32 +71,29 @@
            var radius = 2000000000000000000;
            var mPoint = new BMap.Point(my_lng,my_lat);
            map.centerAndZoom(mPoint,20);
-
            var point = new BMap.Point(lng,lat);
            var distance = map.getDistance(mPoint,point);
            var distance = Math.ceil(distance);
            $(".distance").append(distance);
-
-            map.enableScrollWheelZoom();
-
-            var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+//          map.enableScrollWheelZoom();
+            var walking = new BMap.WalkingRoute(map);
             walking.search(mPoint, point);   //执行规划路线的视图
-            console.log(walking);
-            var g = new BMap.Icon("../image/lb/adds/location.png",new BMap.Size(68,68));
-            var p = new BMap.Icon("../image/lb/adds/get_location.png",new BMap.Size(68,68));
-            walking.setMarkersSetCallback(function(res){
-              res[0].marker.setIcon(g);
-              res[1].marker.setIcon(p);
-              console.log(res);
-              // res[0].marker.removeEventListener();
-              // res[1].marker.removeEventListener();
+//          var sy = new BMap.Symbol(BMap_Symbol_SHAPE_BACKWARD_OPEN_ARROW, {   //设置折线
+//			    scale: 0.4,//图标缩放大小
+//			    strokeColor:'#fff',//设置矢量图标的线填充颜色
+//			    strokeWeight: '2',//设置线宽
+//			});
+//			var icons = new BMap.IconSequence(sy, '10', '30');
+            walking.setSearchCompleteCallback(function(){
+            	var gg = walking.getResults().getPlan(0).getRoute(0).getPath();   //获取折线点数组
+            	console.log(gg);
+            	var polyline = new BMap.Polyline(gg, {strokeColor:"#00ffc0", strokeWeight:8, strokeOpacity:1,/*icons:[icons],*/enableEditing: false,enableClicking: true}); //自定义设置颜色  大小
+		    	map.addOverlay(polyline);
+		    	map.addOverlay(new BMap.Marker(mPoint,{icon:new BMap.Icon("../image/lb/adds/location.png",new BMap.Size(68,68))})); 
+		    	map.addOverlay(new BMap.Marker(point,{icon:new BMap.Icon("../image/lb/adds/get_location.png",new BMap.Size(68,68))})); 
             });
-
-            // walking.Polyline(setPath(path: distance),setStrokeColor(color,"red"));
-
             map.addControl(new BMap.NavigationControl()); //添加默认缩放平移控件
-
-            var arr = [];
+            setTimeout(function(){map.setViewport([mPoint,point]);},1000);
               $.ajax({
                   type:"GET",
                   url:"http://api.map.baidu.com/geosearch/v3/nearby?ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy&geotable_id=182569&location="+lng+","+lat+"&radius=1&tags=coffee&sortby=distance:-1",
@@ -122,6 +116,6 @@
           src: 'http://www.cbcoffee.cn/sharedcoffee/image/location_action.png'
          });
 
-  })
+  });
 </script>
 </html>

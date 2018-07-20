@@ -1,6 +1,6 @@
 //http 请求获取数据接口地址 正式版服务器
-// var httpUpImg = "http://120.79.53.95/";
-// var httpUpData = "http://120.79.53.95/";
+// var httpUpImg = "http://api.cbcoffee.cn/";
+// var httpUpData = "http://api.cbcoffee.cn/";
 // var uri = "http://www.cbcoffee.cn/sharedcoffee/";
 //http 微信授权 静态授权/获取用户信息授权
 // var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ window.location.href +'&response_type=code&scope=snsapi_userinfo&state=wx';

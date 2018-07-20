@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test wechat login</title>
+		<script src="asset/js/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri=http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html&response_type=code&scope=snsapi_userinfo&state=' +  window.location.href +"?i=1";
+			var getQueryString = function(name){
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			    var r = window.location.search.substr(1).match(reg);
+			    if (r != null) return unescape(r[2]);
+			    return null;
+			};
+			if(!getQueryString("i")){
+				window.location.href = wxUri;
+			}else{
+				$.ajax({
+					type:"get",
+					url:"http://39.108.49.246:8086/WeChat_login?code="+ getQueryString('code') +"&rCouponId=6871",
+					async:false
+				})
+				.done(function(reg){
+					console.log(reg);
+					localStorage.setItem('token',reg);
+				})
+				.fail(function(err){
+					console.log(err);
+					return false;
+				})
+			}
+			
+		</script>
+	</body>
+</html>
