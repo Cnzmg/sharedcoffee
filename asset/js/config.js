@@ -2,7 +2,6 @@
 // var httpUpImg = "http://api.cbcoffee.cn/";
 // var httpUpData = "http://api.cbcoffee.cn/";
 // var uri = "http://www.cbcoffee.cn/sharedcoffee/";
-//http 微信授权 静态授权/获取用户信息授权
 // var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ window.location.href +'&response_type=code&scope=snsapi_userinfo&state=wx';
 // var wxUribase = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ window.location.href +'&response_type=code&scope=snsapi_base&state=wx';
 //http 请求获取数据接口地址 测试版
@@ -26,8 +25,10 @@ jzm.Preservation = function(reg){console.log(reg);localStorage.setItem("token",J
 jzm.Error = function (err){  //错误信息
   console.log(err);
   alert(err.statusCode.msg);
-  if(err.statusCode.status == 1005){localStorage.clear();};
-  __load.location = "/sharedcoffee/index.html";
+  if(err.statusCode.status == 1005){
+	localStorage.clear();
+	__load.location = "/sharedcoffee/index.html";
+  };
 //err.statusCode.status == 1014 ? __load.location = "../index.html" : null;
 //err.statusCode.status != 1005 ? console.log(err.statusCode.msg) : window.location.href = uri + "asset/html/404.html?uri=" + encodeURI(window.location.href.split('?')[0]);
 };
@@ -101,7 +102,11 @@ jzm.getUserToken = function()
               jzm.paraMessage('Preservation',reg);
               if(reg.type == 1)
                 {
-                  jzm.paraMessage('getMapAPI',reg) ? setTimeout(function(){window.location.href=uri+"activity/myactivity4-5.html?activity_uri=" + window.location.href.split('?')[0]},5000) : null;
+                  jzm.paraMessage('getMapAPI',reg) ? setTimeout(function(){
+                  	if(__load.location.pathname != "/sharedcoffee/activity/myactivity4-5.html"){
+                  		window.location.href=uri+"activity/myactivity4-5.html?activity_uri=" + window.location.href.split('?')[0];
+                  	};
+                  },5000) : null;
                 };
                 jzm.getQueryString("machinenumber") ? jzm.paraMessage('luckdrawer',{token:reg.user_token,id:reg.user_id}) : null;
           }

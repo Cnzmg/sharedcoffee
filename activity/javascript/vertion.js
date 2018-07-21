@@ -1,7 +1,7 @@
 var jzmr = {};
 jzmr.phcode = function(type){   //发送验证码
-  if(!$("#phone").val()){alert("请填写手机号码");return false};
-  $.ajax({
+if(!$("#phone").val()){alert("请填写手机号码");return false};
+$.ajax({
       url: httpUpData + 'manage_user_phone',
       type: 'GET',
       dataType: 'json',
@@ -28,8 +28,7 @@ jzmr.phcode = function(type){   //发送验证码
                  $(".goto").removeAttr('disabled').text("重新获取");
             }
             }());
-        }
-        else{
+        }else{
           jzm.Error(reg);
         };
     })
