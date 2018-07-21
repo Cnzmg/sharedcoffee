@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+ 	<meta http-equiv="Expires" content="0" />
+
+	<link rel="stylesheet" href="../asset/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+  	<link rel="icon" href="bitbug_favicon.ico" type="image/x-icon" />
+  	<script src="../asset/js/jquery-3.2.1.min.js"></script>
+  	<!-- 百度地图jsapi -->
+  	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YrLXSmMEX8PpItoywaoeuXigcfKNuzoy"></script>
+  	<script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+  	<!-- 百度地图jsapi -->
+
+  	<script type="text/javascript" src="../asset/js/config.js"></script>
+  	<script language="javascript" type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+  	
+  	<!--mobileselect.js-->
+  	<link rel="stylesheet" type="text/css" href="../dist/mobileSelect.css"/>
+  	<script src="../dist/mobileSelect.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var lenArr = {sharedCoffeeArr:['100001','100002','100003','100004','100005','100006','100007'],officeCoffeeArr:['200001','200002','200003','200004','200005','200006','200007']};  // 参数数组
+	</script>
+  	<title>咖啡菜单</title>
+</head>
+<body style="background:url(../image/lb/background.jpg) repeat;background-size: 100%;height: auto;">
+	<div class="menu">
+		<ul>
+			<li class="trigger-one">共享咖啡机</li>
+			
+			<li class="trigger-two">办公室咖啡机</li>
+			
+			<li onclick="window.location.href = '/sharedcoffeeCode/html/near.html'">选择最近的机器</li>
+		</ul>
+	</div>
+	<script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">jzm.menu();</script>
+</body>
+</html>

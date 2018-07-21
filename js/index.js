@@ -1,6 +1,40 @@
-//加载banner图片
-jzm.find_banner = function()
-{
+//************menu****************
+jzm.menu = function(){
+	new MobileSelect({
+	    trigger: '.trigger-one',
+	    title: '选择机器',
+	    wheels: [
+	                {
+	                	data: lenArr.sharedCoffeeArr
+	                }
+	            ],
+	    position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+	    transitionEnd:function(indexArr, data){
+	        console.log(data);
+	    },
+	    callback:function(indexArr, data){
+	        window.location.href = '../index.html?bt=' + data;
+	    }
+	});
+	new MobileSelect({
+	    trigger: '.trigger-two',
+	    title: '选择机器',
+	    wheels: [
+	                {
+	                	data: lenArr.officeCoffeeArr
+	                }
+	            ],
+	    position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+	    transitionEnd:function(indexArr, data){
+	        console.log(data);
+	    },
+	    callback:function(indexArr, data){
+	        window.location.href = '../index.html?bt=' + data;
+	    }
+	});
+}
+//*********************************************
+jzm.find_banner = function(){
     $.ajax({
         url: httpUpData + 'find_advertisement',
         type: 'GET',
@@ -35,8 +69,7 @@ jzm.find_banner = function()
 
 }
 //动态加载咖啡名称和咖啡价格
-jzm.find_product = function()
-{
+jzm.find_product = function(){
     $.ajax({
         url: httpUpData + 'find_product',
         type: 'GET',
@@ -78,4 +111,5 @@ jzm.find_product = function()
     })
 
 }
+
 new RegExp(jzm.parsURL(window.location.href).path).test('/sharedcoffee/index.html') ? (function(){jzm.paraMessage('find_banner');jzm.paraMessage('find_product');})() : null;

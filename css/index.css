@@ -134,3 +134,25 @@
 	top: 1%;
 	right: 1%;
 }
+
+/***************menu style**********************/
+.menu{
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	margin-top: 35%;
+}
+.menu ul li {
+	width: 50%;
+	height: auto;
+	padding: 20px;
+	box-sizing: border-box;
+	border: 1px solid darkblue;
+	text-align: center;
+	line-height: 100px;
+	float: left;
+	background: #65A9FF;
+}
+.menu li:last-child{
+	width: 100%;
+}
