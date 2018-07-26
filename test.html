@@ -7,31 +7,55 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri=http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html&response_type=code&scope=snsapi_userinfo&state=' +  window.location.href +"?i=1";
-			var getQueryString = function(name){
-			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-			    var r = window.location.search.substr(1).match(reg);
-			    if (r != null) return unescape(r[2]);
-			    return null;
-			};
-			if(!getQueryString("i")){
-				window.location.href = wxUri;
-			}else{
-				$.ajax({
-					type:"get",
-					url:"http://39.108.49.246:8086/WeChat_login?code="+ getQueryString('code') +"&rCouponId=6871",
-					async:false
-				})
-				.done(function(reg){
-					console.log(reg);
-					localStorage.setItem('token',reg);
-				})
-				.fail(function(err){
-					console.log(err);
-					return false;
-				})
-			}
-			
+//			var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri=http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html&response_type=code&scope=snsapi_userinfo&state=' +  window.location.href +"?i=1";
+//			var getQueryString = function(name){
+//			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+//			    var r = window.location.search.substr(1).match(reg);
+//			    if (r != null) return unescape(r[2]);
+//			    return null;
+//			};
+//			if(!getQueryString("code")){
+//				window.location.href = wxUri;
+//			}else{
+//				$.ajax({
+//					type:"get",
+////					url:"http://39.108.49.246:8086/WeChat_login?code="+ getQueryString('code') +"&rCouponId=6871",
+//					url:"https://case.cbcoffee.cn/WeChat_login?code="+ getQueryString('code') +"&rCouponId=0",
+//					async:false
+//				})
+//				.done(function(reg){
+//					console.log(reg);
+//					localStorage.setItem('token',reg);
+//				})
+//				.fail(function(err){
+//					console.log(err);
+//					return false;
+//				})
+//			}
+//			
+function Aop(){
+    alert(2);
+}
+Function.prototype.before = function(fn){
+    var __self = this;
+    return function(){
+    	__self.apply(__self,arguments);   //函数先执行
+    	fn.apply(this,arguments);     //当 前 before fn函数后执行
+    };
+};
+Function.prototype.after = function(fn){
+    var __self = this;
+    return function(){
+        fn.apply(this,arguments);   //当前after fn函数先执行
+    	__self.apply(__self,arguments);   //函数后执行
+    }
+}
+Aop.before(function(){
+    alert(3);
+}).after(function(){
+    alert(1);
+})();
+
 		</script>
 	</body>
 </html>

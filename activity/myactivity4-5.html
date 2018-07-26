@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="row" style="margin-bottom: 10%">
-			<div class="skip" onclick='window.location.href=jzm.getQueryString("activity_uri")'>跳过此步骤</div>
+			<div class="skip" onclick='window.location.href=jzm.getQueryString("activity_uri") ? jzm.getQueryString("activity_uri") : "/sharedcoffee/index.html"'>跳过此步骤</div>
 		</div>
 		<script src="./javascript/vertion.js"></script>
 		<script type="text/javascript">$(function(){$("#menu").hide()})</script>

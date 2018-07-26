@@ -44,6 +44,130 @@
         loadUpFn : function(me){
             setTimeout(function(){
                 me.resetload();
+                if(itemIndex == '0'){
+	            $.ajax({
+	                type: 'GET',
+	                url: httpUpData + u,
+	                data:{userId:us_userid,userToken:us_token,page:1,type:0},
+	                dataType: 'json',
+	                success: function(reg){
+	                    var Li = "",color = "",code = "";
+                        for(var i = 0; i < reg.myOrderList.length; i++){
+                            if (p == 0 || p == 1) {
+                                    if(reg.myOrderList[i].paymentStatus == 1){
+                                        reg.myOrderList[i].paymentStatus =  '待付款';
+                                        color = "#fff100";
+                                        code = "no_action";
+                                    }
+                                    else if(reg.myOrderList[i].paymentStatus == 2){
+                                        if (reg.myOrderList[i].redeemStatus == 2){
+                                                reg.myOrderList[i].paymentStatus =  '已兑换';
+                                                color = "#828282";
+                                                code = "no_action";
+                                                
+                                            }
+                                        else if(reg.myOrderList[i].redeemStatus == 3){
+                                                reg.myOrderList[i].paymentStatus =  '制作中';
+                                                color = "#9f0802";
+                                                code = "no_action";
+                                            }
+                                        else if(reg.myOrderList[i].redeemStatus == 4){
+                                                reg.myOrderList[i].paymentStatus =  '已过期';
+                                                color = "#9f0802";
+                                                code = "no_action";
+                                            }
+                                            else if(reg.myOrderList[i].redeemStatus == 5){
+                                                reg.myOrderList[i].paymentStatus =  '已失效';
+                                                color = "#9f0802";
+                                                code = "no_action";
+                                            }
+                                        else{
+                                                reg.myOrderList[i].paymentStatus =  '未兑换';
+                                                color = "#9f0802";
+                                                code = "action";
+                                            };
+                                        
+                                        
+                                    }
+                                    else if(reg.myOrderList[i].paymentStatus == 3){
+                                        reg.myOrderList[i].paymentStatus =  '已退款';
+                                        color = "#8c8c8c";
+                                        code = "no_action";
+                                    }
+                                    else{
+                                        reg.myOrderList[i].paymentStatus =  '已取消';
+                                        color = "#8c8c8c";
+                                        code = "no_action";
+                                    }
+                                }
+                            else{
+                                    if(reg.myOrderList[i].redeemStatus == 0){
+                                        reg.myOrderList[i].paymentStatus =  '未激活';
+                                        color = "#8c8c8c";
+                                        code = "no_action";
+                                    }
+                                else if(reg.myOrderList[i].redeemStatus == 1){
+                                        reg.myOrderList[i].paymentStatus =  '未兑换';
+                                        color = "#9f0802";
+                                        code = "action";
+                                    }
+                                else if(reg.myOrderList[i].redeemStatus == 2){
+                                        reg.myOrderList[i].paymentStatus =  '已兑换';
+                                        color = "#828282";
+                                        code = "no_action";
+                                    }
+                                else{
+                                        reg.myOrderList[i].paymentStatus =  '已兑换';
+                                        color = "#828282";
+                                        code = "no_action";
+                                    };
+
+                               }
+                            var str = reg.myOrderList[i].flavorShow;
+                            if(reg.myOrderList[i].paymentStatus=='已失效'){                     
+                                Li += '<li class="num_first" id="container_fluid_box" onclick=container_fluid_box('+counter+','+itemIndex+',"'+reg.myOrderList[i].productName.split(',')[0]+'") style="background:rgba(0,0,0,0.5);position:relative;"><div class="num_first_box"></div><div class="num_first_right_btm" style="width:5.5rem; height:5.5rem; position: absolute; bottom:0; right:0; background:url(../image/3.png) no-repeat center center; background-size:100% 100%; z-index:9;"></div><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                                for(var key in str){
+                                    Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
+                                }
+                                Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
+                                
+                                Li += '</div>'; 
+                            }else{
+                                Li += '<li class="num_first"onclick=jzm.find_order_detail("'+ reg.myOrderList[i].orderId +'");return false style="background:rgba(0,0,0,0.5);position:relative;"><div style="flex: 1;max-height:100px;overflow:hidden;"><a href="javascript:void(0);" style="height:100%; display:inline-block;"><img ismap src="'+ reg.myOrderList[i].productPicurl +'" alt="" style="width: 80%;"></a><a></a></div><div class="message" style="margin-left:-20px;color:#8c8c8c;"><p class="wait_pay" style="float:right;color:'+ color +';">'+ reg.myOrderList[i].paymentStatus +'</p><p style="font-size:1.4rem;color:#fff;">'+ reg.myOrderList[i].productName.split(',')[0] +'</p><div style="width:100%;">';
+                            for(var key in str){
+                                Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: left;">'+ key.split(',')[0] +'</span><span style="flex: 2;float:right;">'+ str[key] +'</span></p>';
+                            }
+                            Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">金额</span><span style="flex: 2;float:right;">￥'+ reg.myOrderList[i].paymentMoney / 100 +'</span></p>';
+                            if(code == "action"){
+                                    Li += '<p style="font-size:1rem;"><span style="flex: 1; text-align: right;">兑换码</span><span style="flex: 2;float:right;font-size:1.6rem;">'+ reg.myOrderList[i].redeemCode +'</span></p>';
+                               };
+                            Li += '</div>';
+                           
+                            if (reg.myOrderList[i].paymentStatus == '待付款') {
+                                Li += '</div><a href="order_pay.html?orderId='+ reg.myOrderList[i].orderId +'" style="background-color: #fff100; color: #000; font-size:1rem; padding:1% 2%; position: absolute; right: 2%; bottom: 10%; border-radius:10px;">立即支付</a></li>';
+                            };
+                            }
+                        };
+	                    if(reg.myOrderList == ""){
+	                    	tabLoadEnd = true;
+	                    	 // 锁定
+	                        me.lock();
+	                        // 无数据
+	                        me.noData();
+	                    }
+	                    // 为了测试，延迟1秒加载
+	                    setTimeout(function(){
+	                        $('.list').eq(itemIndex).html(Li);
+	                        // 每次数据加载完，必须重置
+	                        me.resetload();
+	                    },1000);
+	                },
+	                error: function(xhr, type){
+	                    // 即使加载出错，也得重置
+	                    me.resetload();
+	                }
+	            });
+        	}
             },1000);
         },
         loadDownFn : function(me){
@@ -55,6 +179,7 @@
 	                data:{userId:us_userid,userToken:us_token,page:counter,type:0},
 	                dataType: 'json',
 	                success: function(reg){
+	                	if(typeof(reg.statusCode) != 'undefined') {jzm.Error(reg)}
 	                    var Li = "",color = "",code = "";
                         for(var i = 0; i < reg.myOrderList.length; i++){
                             if (p == 0 || p == 1) {

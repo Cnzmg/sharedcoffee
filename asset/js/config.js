@@ -5,8 +5,8 @@
 // var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ window.location.href +'&response_type=code&scope=snsapi_userinfo&state=wx';
 // var wxUribase = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ window.location.href +'&response_type=code&scope=snsapi_base&state=wx';
 //http 请求获取数据接口地址 测试版
-var httpUpImg = "http://test.cbcoffee.cn:8086/";
-var httpUpData = "http://test.cbcoffee.cn:8086/";
+var httpUpImg = "https://case.cbcoffee.cn/";
+var httpUpData = "https://case.cbcoffee.cn/";
 var uri = "http://test.cbcoffee.cn/sharedcoffee/";
 var transferStation = "http://www.cbcoffee.cn/sharedcoffee/tran/transfer.html"; // 测试服授权微信中转站
 var wxUri = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx71c7dc4f5208bb07&redirect_uri='+ transferStation +'&response_type=code&scope=snsapi_userinfo&state=' +  window.location.href;

@@ -61,7 +61,7 @@
 
 <div style="z-index:999;width:100%;text-align:center;font-size:1rem;color:#fff;position:fixed;top:0;left:0;padding:6px 0;box-sizing:border-box;background:rgba(0,0,0,0.5);display:none;" id="tipie"></div>
 
-<a href="/sharedcoffee/activity/activity.html" class="phmessage" style="position: fixed;left: -33%;top: 25%;width: 5rem;"><img src="activity/images/active_btn.jpg" style="width: 100%;"/></a>
+<a href="/sharedcoffee/activity/activity.html" class="phmessage" style="position: fixed;left: -33%;top: 25%;width: 10rem;"><img src="activity/images/active_btn.png" style="width: 100%;"/></a>
 </body>
 <script src="js/index.js?v=20180425"></script>
 <script>
@@ -76,7 +76,7 @@
 					__load.location = "html/delicious.html?productId=" + this.getAttribute("data-productId");
       });
       setTimeout(function(){$("#tipie").fadeOut(100);}, 10000);
-//    $('.phmessage').animate({'left':0},2000);
+      $('.phmessage').animate({'left':-20},2000);
 	});
 </script>
 </html>
